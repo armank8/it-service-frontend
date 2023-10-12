@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { Layout, Menu } from "antd";
 
-// import { sidebarItems } from "@/constants/sidebarItems";
+import { sidebarItems } from "@/constants/sidebarItems";
+
 import { USER_ROLE } from "@/constants/role";
 
 const { Sider } = Layout;
@@ -43,7 +44,7 @@ const SideBar = () => {
         theme="dark"
         defaultSelectedKeys={["1"]}
         mode="inline"
-        // items={sidebarItems(role)}
+        items={sidebarItems(role)}
       />
     </Sider>
   );
