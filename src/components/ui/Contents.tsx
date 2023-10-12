@@ -7,6 +7,7 @@ const { Content } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
   const base = "admin";
+  
   return (
     <Content
       style={{

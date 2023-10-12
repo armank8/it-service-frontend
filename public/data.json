@@ -1,0 +1,27 @@
+[
+    {
+        "id":"1",
+        "name":"Hardware Repair and Replacement",
+        "price":"5000",
+        "description":"This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
+        "reviews":["Made my pc almost new","Great Service","best service in the town"],
+        "rating":"5"
+    },
+    {
+        "id":"1",
+        "name":"Software Troubleshooting",
+        "price":"5000",
+        "description":"This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
+        "reviews":["Made my pc almost new","Great Service","best service in the town"],
+        "rating":"5"
+    },
+    {
+        "id":"1",
+        "name":"Hardware Repair and Replacement",
+        "price":"5000",
+        "description":"This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
+        "reviews":["Made my pc almost new","Great Service","best service in the town"],
+        "rating":"5"
+    }
+
+]
