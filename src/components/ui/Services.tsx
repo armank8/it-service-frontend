@@ -12,7 +12,7 @@ const Services = ({ services }: { services: any }) => {
                     services.map((service: any) => (
                         <Col key={service.id} xs={24} sm={24} md={12} lg={8}>
 
-                            <Link href={`/products/${service?.id}`} style={{ color: 'none' }}>
+                            <Link href={`/services/${service?._id}`} style={{ color: 'none' }}>
                                 <Card bordered={true} hoverable style={{ color: 'black' }}>
                                     <h1 style={{ textAlign: 'center' }}>{service?.name}</h1>
                                     <Space style={{ display: 'flex', justifyContent: "center" }}>
