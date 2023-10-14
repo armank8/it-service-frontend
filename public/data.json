@@ -1,27 +1,41 @@
 [
-    {
-        "id":"1",
-        "name":"Hardware Repair and Replacement",
-        "price":"5000",
-        "description":"This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
-        "reviews":["Made my pc almost new","Great Service","best service in the town"],
-        "rating":"5"
-    },
-    {
-        "id":"1",
-        "name":"Software Troubleshooting",
-        "price":"5000",
-        "description":"This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
-        "reviews":["Made my pc almost new","Great Service","best service in the town"],
-        "rating":"5"
-    },
-    {
-        "id":"1",
-        "name":"Hardware Repair and Replacement",
-        "price":"5000",
-        "description":"This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
-        "reviews":["Made my pc almost new","Great Service","best service in the town"],
-        "rating":"5"
-    }
-
+  {
+    "id": "1",
+    "name": "Hardware Repair and Replacement",
+    "price": "5000",
+    "description": "This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
+    "rating": "5",
+    "reviews": [
+      "Made my pc almost new",
+      "Great Service",
+      "best service in the town"
+    ],
+    "category": "Repair"
+  },
+  {
+    "id": "2",
+    "name": "Software Troubleshooting",
+    "price": "7000",
+    "description": "IT professionals diagnose and resolve software-related issues, including operating system errors, driver problems, and software conflicts. They can also help with software installation, updates, and configuration.",
+    "rating": "5",
+    "reviews": [
+      "Made my pc almost new",
+      "Great Service",
+      "best service in the town"
+    ],
+    "category": "Service"
+  },
+  {
+    "id": "3",
+    "name": "Virus and Malware Removal",
+    "price": "9000",
+    "description": "IT experts can detect and remove viruses, spyware, and other malicious software from computers and networks to ensure data security.",
+    "rating": "5",
+    "reviews": [
+      "Made my pc almost new",
+      "Great Service",
+      "best service in the town"
+    ],
+    "category": "Service"
+  }
 ]
