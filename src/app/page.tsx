@@ -1,16 +1,15 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import RootLayout from './layout'
+import Services from '@/components/ui/Services'
+
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      {/* <RootLayout>
+      <Services></Services>
 
-      </RootLayout> */}
 
-     
-        
+
     </main>
   )
 }
