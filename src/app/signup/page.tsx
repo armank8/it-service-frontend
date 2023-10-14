@@ -1,24 +1,29 @@
 "use client";
 import { Button, Col, Input, Row } from "antd";
-import loginImage from "../../assets/login-image.png";
+import signupImage from "../../assets/sign-up-image.png";
 import Image from "next/image";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
-import { useUserLoginMutation } from "@/redux/api/authApi";
+import { useUserLoginMutation, useUserSignupMutation } from "@/redux/api/authApi";
+import toast from "react-hot-toast";
 
 type FormValues = {
   id: string;
   password: string;
 };
 
-const LoginPage = () => {
-  const [userLogin] = useUserLoginMutation();
+const SignupPage = () => {
+  const [userSignup] = useUserSignupMutation();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (info) => {
     try {
-      console.log(data);
-      userLogin(data);
+      console.log(info);
+      const res = await userSignup(info);
+      console.log(res);
+      if(res){
+        toast("User Created successfully");
+      }
     } catch (err) {}
   };
   return (
@@ -30,7 +35,7 @@ const LoginPage = () => {
       }}
     >
       <Col sm={12} md={16} lg={10}>
-        <Image src={loginImage} width={500} alt="login image" />
+        <Image src={signupImage} width={500} alt="login image" />
       </Col>
       <Col sm={12} md={8} lg={8}>
         <h1
@@ -38,12 +43,12 @@ const LoginPage = () => {
             margin: "15px 0px",
           }}
         >
-          First login your account
+          First Create your account
         </h1>
         <div>
           <Form submitHandler={onSubmit}>
             <div>
-              <FormInput name="id" type="text" size="large" label="User Id" />
+              <FormInput name="email" type="text" size="large" label="Email" />
             </div>
             <div
               style={{
@@ -58,7 +63,7 @@ const LoginPage = () => {
               />
             </div>
             <Button type="primary" htmlType="submit">
-              Login
+              SignUp
             </Button>
           </Form>
         </div>
@@ -67,4 +72,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;
