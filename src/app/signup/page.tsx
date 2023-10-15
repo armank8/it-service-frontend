@@ -10,8 +10,9 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 type FormValues = {
-  id: string;
+  email: string;
   password: string;
+  role?:string;
 };
 
 const SignupPage = () => {
@@ -20,14 +21,15 @@ const SignupPage = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (info) => {
     try {
-      console.log(info);
+      // console.log(info);
+      info["role"] = "user";
       const res = await userSignup(info);
       if (res.data) {
-        console.log(res);
+        // console.log(res);
         toast("User Created successfully");
         router.push('/login')
       }else if(res.error){
-        console.log(res);
+        // console.log(res);
         toast.error("User not Created");
       }
     } catch (err) { }

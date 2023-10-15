@@ -8,9 +8,10 @@ import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { storeUserInfo } from "@/services/auth.service";
 
 type FormValues = {
-  id: string;
+  email: string;
   password: string;
 };
 
@@ -21,16 +22,16 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       // console.log(data);
-      const res = await userLogin(data);
-      if (res.data) {
-        // console.log(res);
-        toast("User logged in successfully");
-        router.push('/profile')
-      }else if(res.error){
-        // console.log(res);
-        toast.error("User not logged in");
-      }
-    } catch (err) {}
+      const res = await userLogin({ ...data }).unwrap();
+      console.log(res);
+      toast("User logged in successfully");
+      storeUserInfo({ accessToken: res?.data?.accessToken })
+      // router.push('/profile');
+
+
+    } catch (err) {
+      toast.error("User not logged in");
+    }
   };
   return (
     <Row
