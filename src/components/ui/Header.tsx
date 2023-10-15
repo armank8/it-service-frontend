@@ -1,7 +1,7 @@
 "use client";
 
 import { authKey } from '@/constants/storageKey';
-import { removeUserInfo } from '@/services/auth.service';
+import { getUserInfo, removeUserInfo } from '@/services/auth.service';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Breadcrumb, Button, Dropdown, Layout, Menu, MenuProps, Space, theme } from 'antd';
 import Link from 'next/link';
@@ -10,6 +10,8 @@ import toast from 'react-hot-toast';
 const { Header, Content, Footer } = Layout;
 
 const CommonHeader = () => {
+    const { role } = getUserInfo() as any;
+    //   console.log(role);
     const router = useRouter();
     const logOut = () => {
         removeUserInfo(authKey);
@@ -45,6 +47,7 @@ const CommonHeader = () => {
             <Dropdown menu={{ items }}>
                 <a>
                     <Space wrap size={16}>
+                        {role}
                         <Avatar size="large" icon={<UserOutlined />} />
                     </Space>
                 </a>
