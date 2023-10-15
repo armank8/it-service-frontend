@@ -8,7 +8,7 @@ import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { storeUserInfo } from "@/services/auth.service";
+import { getUserInfo, isLoggedIn, storeUserInfo } from "@/services/auth.service";
 
 type FormValues = {
   email: string;
@@ -19,14 +19,19 @@ const LoginPage = () => {
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
 
+  console.log(getUserInfo());
+  console.log(isLoggedIn());
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       // console.log(data);
       const res = await userLogin({ ...data }).unwrap();
-      console.log(res);
-      toast("User logged in successfully");
+      // console.log(res);
+      if(res?.data?.accessToken){
+        toast("User logged in successfully");
+        router.push('/profile');
+      }
       storeUserInfo({ accessToken: res?.data?.accessToken })
-      // router.push('/profile');
 
 
     } catch (err) {
