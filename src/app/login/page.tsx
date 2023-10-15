@@ -19,19 +19,19 @@ const LoginPage = () => {
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
 
-  console.log(getUserInfo());
-  console.log(isLoggedIn());
+  // console.log(getUserInfo());
+  // console.log(isLoggedIn());
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       // console.log(data);
       const res = await userLogin({ ...data }).unwrap();
       // console.log(res);
-      if(res?.data?.accessToken){
+      if(res?.accessToken){
         toast("User logged in successfully");
         router.push('/profile');
       }
-      storeUserInfo({ accessToken: res?.data?.accessToken })
+      storeUserInfo({ accessToken: res?.accessToken })
 
 
     } catch (err) {

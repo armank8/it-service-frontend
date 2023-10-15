@@ -11,10 +11,12 @@ import Services from '@/components/ui/Services';
 export default function Home() {
 
   const { data, isLoading } = useGetServicesQuery(undefined);
+  console.log(data);
   if (isLoading) {
     return <Loading></Loading>
   }
-  const servicesData = data?.data;
+  // const servicesData = data?.data;
+  const servicesData = data;
   // console.log(servicesData);
 
   return (

@@ -8,11 +8,13 @@ import Image from "next/image";
 const ServiceDetailsPage = ({ params }: { params: any }) => {
     const id = params.id;
     const { data, isLoading } = useGetSingleServiceQuery(id);
+    console.log(data);
     if (isLoading) {
         return <Loading></Loading>
     }
 
-    const service = data?.data[0];
+    // const service = data?.data[0];
+    const service = data[0];
     // console.log(data,service);
 
     return (
