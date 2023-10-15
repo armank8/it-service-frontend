@@ -17,7 +17,10 @@ const CommonHeader = () => {
                 <Link href='/'>IT-HOUSE</Link>
             </div>
             <Button type="primary">
-                <Link href='/pc-builder'>PC BUILDER</Link>
+                <Link href='/signup'>Sign Up</Link>
+            </Button>
+            <Button type="primary">
+                <Link href='/login'>Login</Link>
             </Button>
 
             <div style={{}}>

@@ -7,6 +7,7 @@ import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation, useUserSignupMutation } from "@/redux/api/authApi";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   id: string;
@@ -15,16 +16,21 @@ type FormValues = {
 
 const SignupPage = () => {
   const [userSignup] = useUserSignupMutation();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = async (info) => {
     try {
       console.log(info);
       const res = await userSignup(info);
-      console.log(res);
-      if(res){
+      if (res.data) {
+        console.log(res);
         toast("User Created successfully");
+        router.push('/login')
+      }else if(res.error){
+        console.log(res);
+        toast.error("User not Created");
       }
-    } catch (err) {}
+    } catch (err) { }
   };
   return (
     <Row

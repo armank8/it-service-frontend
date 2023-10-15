@@ -6,6 +6,8 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 type FormValues = {
   id: string;
@@ -14,11 +16,20 @@ type FormValues = {
 
 const LoginPage = () => {
   const [userLogin] = useUserLoginMutation();
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      console.log(data);
-      userLogin(data);
+      // console.log(data);
+      const res = await userLogin(data);
+      if (res.data) {
+        // console.log(res);
+        toast("User logged in successfully");
+        router.push('/profile')
+      }else if(res.error){
+        // console.log(res);
+        toast.error("User not logged in");
+      }
     } catch (err) {}
   };
   return (
@@ -43,7 +54,7 @@ const LoginPage = () => {
         <div>
           <Form submitHandler={onSubmit}>
             <div>
-              <FormInput name="id" type="text" size="large" label="User Id" />
+              <FormInput name="email" type="text" size="large" label="Email" />
             </div>
             <div
               style={{

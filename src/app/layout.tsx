@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google';
 import CommonHeader from '@/components/ui/Header';
 import CommonFooter from '@/components/ui/Footer';
-// import RootLayout from './layout'
+import toast, { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +22,7 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <body className={inter.className}>
+          <Toaster />
           <CommonHeader></CommonHeader>
           {children}
           <CommonFooter></CommonFooter>
