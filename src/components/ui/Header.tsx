@@ -1,10 +1,29 @@
 "use client";
 
-import { Breadcrumb, Button, Dropdown, Layout, Menu, Space, theme } from 'antd';
+import { authKey } from '@/constants/storageKey';
+import { removeUserInfo } from '@/services/auth.service';
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar, Breadcrumb, Button, Dropdown, Layout, Menu, MenuProps, Space, theme } from 'antd';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 const { Header, Content, Footer } = Layout;
 
 const CommonHeader = () => {
+    const router = useRouter();
+    const logOut = () => {
+        removeUserInfo(authKey);
+        toast.error("Logged Out");
+        router.push("/login");
+    }
+
+    const items: MenuProps['items'] = [
+        {
+            key: "0",
+            label: <Button onClick={logOut} type="text" danger> LogOut </Button>
+        },
+    ]
+
     return (
         <Header
             style={{
@@ -22,6 +41,14 @@ const CommonHeader = () => {
             <Button type="primary">
                 <Link href='/login'>Login</Link>
             </Button>
+
+            <Dropdown menu={{ items }}>
+                <a>
+                    <Space wrap size={16}>
+                        <Avatar size="large" icon={<UserOutlined />} />
+                    </Space>
+                </a>
+            </Dropdown>
 
             <div style={{}}>
                 {/* <Dropdown menu={{ items }}>
