@@ -3,11 +3,11 @@ import UMBreadCrumb from "@/components/ui/UMBreadCrumb"
 import { getUserInfo } from "@/services/auth.service"
 
 const ManageAdminPage = () => {
-    const {role} = getUserInfo() as any;
-    console.log(role);
+  const { role } = getUserInfo() as any;
+  console.log(role);
   return (
     <div>
-         <UMBreadCrumb
+      <UMBreadCrumb
         items={[
           {
             label: `${role}`,

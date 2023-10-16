@@ -1,11 +1,9 @@
 "use client";
 
-import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
+import UMBreadCrumb from "@/components/ui/UMBreadCrumb"
 import { getUserInfo } from "@/services/auth.service";
-import { Button } from "antd"
-import Link from "next/link"
 
-const ManageServicesPage = () => {
+const CreateServicePage = () => {
   const { role } = getUserInfo() as any;
   console.log(role);
   return (
@@ -20,15 +18,15 @@ const ManageServicesPage = () => {
             label: `${role}/manage_services`,
             link: `/${role}/manage_services`,
           },
+          {
+            label: `${role}/manage_services/create`,
+            link: `/${role}/manage_services/create`,
+          }
         ]}
       />
-      <h1>Manage Services Page</h1>
-      <h2>Services List</h2>
-      <Link href="/admin/manage_services/create">
-        <Button type="primary">Create</Button>
-      </Link>
+        <h1>Create Service Page</h1>
     </div>
   )
 }
 
-export default ManageServicesPage
+export default CreateServicePage
