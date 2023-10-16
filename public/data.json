@@ -38,4 +38,13 @@
     ],
     "category": "Service"
   }
+],
+
+[
+  {
+    "email":"armank@gmail.com",
+    "role":"super_admin",
+    "password":"123456"
+
+  }
 ]

@@ -6,7 +6,7 @@ import UMBreadCrumb from "./UMBreadCrumb";
 const { Content } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
-  const base = "admin";
+  // const base = "admin";
   
   return (
     <Content
@@ -15,7 +15,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
         color: "black",
       }}
     >
-      <UMBreadCrumb
+      {/* <UMBreadCrumb
         items={[
           {
             label: `${base}`,
@@ -26,7 +26,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
             link: `/${base}/student`,
           },
         ]}
-      />
+      /> */}
       {children}
     </Content>
   );
