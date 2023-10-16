@@ -24,6 +24,10 @@ const CommonHeader = () => {
             key: "0",
             label: <Button onClick={logOut} type="text" danger> LogOut </Button>
         },
+        {
+            key: "1",
+            label: <Link href="/profile"><Button type="text" danger> Profile </Button></Link>
+        },
     ]
 
     return (

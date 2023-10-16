@@ -1,3 +1,5 @@
+"use client";
+
 import type { MenuProps } from "antd";
 import {
   ProfileOutlined,
@@ -21,11 +23,11 @@ export const sidebarItems = (role: string) => {
       icon: <ProfileOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/profile`}>Account Profile</Link>,
+          label: <Link href={`/profile/profile`}>Account Profile</Link>,
           key: `/${role}/profile`,
         },
         {
-          label: <Link href={`/${role}/change-password`}>Change Password</Link>,
+          label: <Link href={`/profile/change-password`}>Change Password</Link>,
           key: `/${role}/change-password`,
         },
       ],

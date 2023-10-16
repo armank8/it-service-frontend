@@ -1,3 +1,4 @@
+"use client";
 
 import { Breadcrumb, Button, Dropdown, Layout, Menu, Space, theme } from 'antd';
 const { Header, Content, Footer } = Layout;
