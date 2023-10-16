@@ -6,7 +6,7 @@ import { getUserInfo } from "@/services/auth.service";
 import { Button } from "antd";
 import Link from "next/link";
 
-const AdminPage = () => {
+const ManageAdminPage = () => {
     const { role } = getUserInfo() as any;
     console.log(role);
 
@@ -17,13 +17,17 @@ const AdminPage = () => {
                     {
                         label: `${role}`,
                         link: `/${role}`,
+                    },
+                    {
+                        label: `${role}/admin`,
+                        link: `/${role}/admin`,
                     }
                 ]}
             />
-            <h1>AdminPage</h1>
+            <h1>Manage Admin Page</h1>
 
             <ActionBar title="Admin List">
-                <Link href="/admin">
+                <Link href="/super_admin/admin/create">
                     <Button type="primary">Create</Button>
                 </Link>
             </ActionBar>
@@ -31,4 +35,4 @@ const AdminPage = () => {
     )
 }
 
-export default AdminPage
+export default ManageAdminPage
