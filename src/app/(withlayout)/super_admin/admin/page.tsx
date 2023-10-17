@@ -87,6 +87,7 @@ const ManageAdminPage = () => {
                 showSizeChanger= {true}
                 onPaginationChange={onPaginationChange}
                 onTableChange={onTableChange}
+                showPagination={true}
             ></IHTable>
         </div >
     )

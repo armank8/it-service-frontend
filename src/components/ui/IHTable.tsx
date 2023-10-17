@@ -8,8 +8,9 @@ type IHTableProps = {
     pageSize?: number
     totalPages?: number
     showSizeChanger?: boolean
-    onPaginationChange?: (page: number, pageSize: number) => void
-    onTableChange?: (pagination: any, filter: any, sorter: any) => void
+    onPaginationChange?: (page: number, pageSize: number) => void;
+    onTableChange?: (pagination: any, filter: any, sorter: any) => void;
+    showPagination?: boolean;
 };
 
 const IHTable = ({
@@ -21,22 +22,21 @@ const IHTable = ({
     showSizeChanger = true,
     onPaginationChange,
     onTableChange,
+    showPagination = true
 }: IHTableProps) => {
 
-
-
-    const paginationConfig = {
-        pageSize: 5,
-        total: 10,
+    const paginationConfig = showPagination ? {
+        pageSize: pageSize,
+        total: totalPages,
         pageSizeOptions: [5, 10, 20],
-        showSizeChanger: true,
+        showSizeChanger: showSizeChanger,
         onChange: onPaginationChange,
-    };
+    } : false;
 
 
 
     return (
-        <Table loading={false} columns={columns} dataSource={tableData}
+        <Table loading={loading} columns={columns} dataSource={dataSource}
             pagination={paginationConfig} onChange={onTableChange}
         >IHTable</Table>
     )
