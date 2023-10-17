@@ -2,14 +2,16 @@
 
 import { authKey } from '@/constants/storageKey';
 import { getUserInfo, removeUserInfo } from '@/services/auth.service';
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Breadcrumb, Button, Dropdown, Layout, Menu, MenuProps, Space, theme } from 'antd';
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Breadcrumb, Button, Drawer, Dropdown, Layout, Menu, MenuProps, Space, theme } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 const { Header, Content, Footer } = Layout;
 
 const CommonHeader = () => {
+    const [openMenu, setOpenMenu] = useState(false);
     const { role } = getUserInfo() as any;
     //   console.log(role);
     const router = useRouter();
@@ -26,13 +28,24 @@ const CommonHeader = () => {
         },
         {
             key: "1",
-            label: <Button onClick={logOut} type="text" danger> LogOut </Button>
+            label: <Link href="/profile"><Button type="text" danger> Profile </Button></Link>
         },
         {
             key: "2",
-            label: <Link href="/profile"><Button type="text" danger> Profile </Button></Link>
-        },
-
+            label: <div>
+                {role ?
+                    <Button onClick={logOut} type="text" danger>LogOut</Button> :
+                    <div style={{ display: 'flex', flexDirection: "column" }}>
+                        <Button type="primary" style={{ marginBottom: "5px" }}>
+                            <Link href='/login'>Login</Link>
+                        </Button>
+                        <Button type="primary">
+                            <Link href='/signup'>Sign Up</Link>
+                        </Button>
+                    </div>
+                }
+            </div>
+        }
     ]
 
     return (
@@ -40,27 +53,56 @@ const CommonHeader = () => {
             style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between'
+                // justifyContent: 'space-between'
             }}
         >
             <div className="demo-logo" style={{ color: "white", fontWeight: "bold", fontSize: "20px", lineHeight: '0' }}>
                 <Link href='/'>IT-HOUSE</Link>
             </div>
-            <Button type="primary">
-                <Link href='/signup'>Sign Up</Link>
-            </Button>
-            <Button type="primary">
-                <Link href='/login'>Login</Link>
-            </Button>
 
-            <Dropdown menu={{ items }}>               
+            <div
+                style={{
+                    backgroundColor: "darkorange",
+                    height: 60,
+                    padding: "12px 0 0 12px",
+                    display: "flex",
+                    justifyContent: "right",
+                    paddingRight: "10px"
+                }}
+                className="menuIcon"
+            >
+                <MenuOutlined
+                    style={{ color: "white", fontSize: 30 }}
+                    onClick={() => {
+                        setOpenMenu(true);
+                    }}
+                    className='theIcon'
+                ></MenuOutlined>
+            </div>
+
+            <span className="headerMenu">
+                <AppMenu></AppMenu>
+            </span>
+
+            <Dropdown menu={{ items }}>
                 <a>
                     <Space wrap size={16}>
-
                         <Avatar size="large" icon={<UserOutlined />} />
                     </Space>
                 </a>
             </Dropdown>
+
+            <Drawer
+                placement="right"
+                open={openMenu}
+                onClose={() => {
+                    setOpenMenu(false);
+                }}
+                closable={true}
+                style={{ backgroundColor: "darkorange" }}
+            >
+                <AppMenu isInline></AppMenu>
+            </Drawer>
 
             <div style={{}}>
                 {/* <Dropdown menu={{ items }}>
@@ -76,4 +118,37 @@ const CommonHeader = () => {
     )
 }
 
-export default CommonHeader
+export default CommonHeader;
+
+
+function AppMenu({ isInline = false }) {
+    return (
+        <Menu
+            style={{
+                backgroundColor: "darkorange",
+                color: "white",
+                fontSize: 24,
+                border: "none",
+            }}
+            mode={isInline ? "inline" : "horizontal"}
+            items={[
+                {
+                    label: "Home",
+                    key: "home",
+                },
+                {
+                    label: "Contact Us",
+                    key: "contact Us",
+                },
+                {
+                    label: "About",
+                    key: "about",
+                },
+                {
+                    label: "Login",
+                    key: "login",
+                },
+            ]}
+        ></Menu>
+    );
+}
