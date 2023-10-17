@@ -4,29 +4,29 @@ import { Card, Col, Row, Space } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 
-const Services = ({ services }: { services: any }) => {
-    console.log(services);
+const Blogs = ({ blogs }: { blogs: any }) => {
+    // console.log(blogs);
     return (
-        <div style={{ margin: '30px auto' }}>
+        <div style={{ margin: '20px auto' }}>
             {/* <Row gutter={[8, 16,24]}></Row> */}
             <Row gutter={[8, 16]}>
                 {
-                    services.map((service: any) => (
-                        <Col key={service.id} xs={24} sm={24} md={12} lg={8}>
+                    blogs.map((blog: any) => (
+                        <Col key={blog._id} xs={24} sm={24} md={12} lg={8}>
 
-                            <Link href={`/services/${service?._id}`} style={{ color: 'none' }}>
+                            <Link href={`/blogs/${blog?._id}`} style={{ color: 'none' }}>
                                 <Card bordered={true} hoverable style={{ color: 'black' }}>
-                                    <h1 style={{ textAlign: 'center' }}>{service?.name}</h1>
+                                    <h1 style={{ textAlign: 'center' }}>{blog?.name}</h1>
                                     <Space style={{ display: 'flex', justifyContent: "center" }}>
-                                        {/* <Image src={service?.image} style={{}} alt='' width={200} height={200}></Image> */}
+                                        {/* <Image src={blog?.image} style={{}} alt='' width={200} height={200}></Image> */}
                                     </Space>
 
                                     <Space style={{ display: 'flex', justifyContent: 'space-between', margin: '0 100px' }}>
-                                        <p>{service?.category}</p>
-                                        <h1 style={{ color: 'crimson' }}>{service?.price}</h1>
-                                        <p>{service?.status}</p>
+                                        <p>{blog?.category}</p>
+                                        <h1 style={{ color: 'crimson' }}>{blog?.price}</h1>
+                                        <p>{blog?.status}</p>
                                     </Space>
-                                    <p>{service?.description?.length > 100 ? service.description.slice(0, 100) + '......' : service.description}
+                                    <p>{blog?.description?.length > 100 ? blog.description.slice(0, 100) + '......' : blog.description}
                                     </p>
 
                                 </Card>
@@ -49,4 +49,4 @@ const Services = ({ services }: { services: any }) => {
     )
 }
 
-export default Services
+export default Blogs;

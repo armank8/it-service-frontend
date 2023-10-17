@@ -1,0 +1,63 @@
+[
+    {
+        "title":"",
+        "image":"https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author":"",
+        "category":"",
+        
+        "descriptions":""
+    }
+]
+[
+    {
+        "title": "Article 1",
+        "image": "https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author": "John Doe",
+        "category": "Technology",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat, nunc quis dapibus congue, augue nunc bibendum lectus, eu tempus sapien felis eu metus. Nulla facilisi. Sed at justo sit amet ante venenatis fringilla. Cras in velit non libero ultricies fermentum. Phasellus a fermentum metus. Sed cursus libero a tellus tincidunt, at vulputate ligula dignissim. Sed varius odio euismod, varius arcu ac, vehicula massa. Nulla facilisi. Nulla ultricies ipsum eget mi bibendum, eget suscipit metus interdum. Aenean consequat massa nec nunc convallis posuere. Nulla facilisi. Nulla efficitur ante id metus scelerisque euismod."
+    },
+    {
+        "title": "Article 2",
+        "image": "https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author": "Jane Smith",
+        "category": "Science",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam quam vel tristique. Proin interdum, erat a lacinia vehicula, urna justo facilisis nunc, eu tincidunt urna justo non sapien. Nulla id metus vel sem bibendum bibendum. Maecenas ultricies sit amet sem vitae auctor. Integer ac nunc bibendum, consectetur sapien id, ultrices libero. Nulla facilisi. Fusce quis libero nec arcu condimentum ullamcorper. Sed fermentum tellus ut sapien consequat, nec cursus felis auctor. Donec a mi eget quam dignissim accumsan. Aenean vel augue vitae lectus rhoncus tristique."
+    },
+    {
+        "title": "Article 3",
+        "image": "https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author": "Mark Johnson",
+        "category": "Travel",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac turpis ac purus feugiat blandit eu in ex. Vivamus sollicitudin a justo non ultrices. Vivamus euismod turpis a urna euismod, a convallis neque volutpat. Sed id metus sit amet ipsum interdum vulputate. Nulla facilisi. Fusce in dui non lectus scelerisque vestibulum. Integer at nulla quis nisi fermentum malesuada. Duis at tincidunt quam. Fusce auctor dolor a ante condimentum, at posuere massa vehicula. Nullam venenatis elit a massa sagittis, vel hendrerit arcu viverra."
+    },
+    {
+        "title": "Article 4",
+        "image": "https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author": "Emily Brown",
+        "category": "Food",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae venenatis nulla. Morbi vitae metus non metus tincidunt malesuada. Sed in nunc vel justo dignissim elementum. Vestibulum euismod sagittis mauris a ultrices. Nullam eu ultricies leo. Proin vel lectus vitae odio tristique egestas. Nulla facilisi. Phasellus nec nunc vitae libero tincidunt cursus. Duis a tortor a sem tincidunt vulputate. Cras laoreet sapien eu metus congue, quis ullamcorper risus eleifend. Morbi"
+    },
+    {
+        "title": "Article 5",
+        "image": "https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author": "David Wilson",
+        "category": "Health",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod eros at justo posuere, eget sagittis tortor rhoncus. Sed id metus sed ante tincidunt malesuada. Integer at nulla in sapien vehicula bibendum. Quisque euismod, metus vel lacinia bibendum, erat ex tristique elit, sit amet convallis orci nulla vel sem. Nulla facilisi. Fusce auctor lectus ut scelerisque interdum. Phasellus a fermentum metus. Sed nec nunc arcu. Sed varius odio euismod, varius arcu ac, vehicula massa."
+    },
+    {
+        "title": "Article 6",
+        "image": "https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author": "Sarah Davis",
+        "category": "Fashion",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis dolor sit amet purus bibendum, a tristique ligula finibus. Duis a tortor ac ipsum tincidunt vulputate. Nullam euismod tellus eget ultrices. Nulla facilisi. Sed cursus libero a tellus tincidunt, at vulputate ligula dignissim. Fusce in dui non lectus scelerisque vestibulum. Morbi vel justo id ipsum fermentum aliquet. Aenean consequat metus nec convallis. Cras in velit non libero ultricies fermentum. Sed id metus vitae libero tincidunt cursus."
+    }   
+    {
+        "title": "Article 7",
+        "image": "https://i.ibb.co/9h3nCW6/blog-image.jpg",
+        "author": "Sarah Daviss",
+        "category": "Fashion",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis dolor sit amet purus bibendum, a tristique ligula finibus. Duis a tortor ac ipsum tincidunt vulputate. Nullam euismod tellus eget ultrices. Nulla facilisi. Sed cursus libero a tellus tincidunt, at vulputate ligula dignissim. Fusce in dui non lectus scelerisque vestibulum. Morbi vel justo id ipsum fermentum aliquet. Aenean consequat metus nec convallis. Cras in velit non libero ultricies fermentum. Sed id metus vitae libero tincidunt cursus."
+    }   
+]
+
+  
