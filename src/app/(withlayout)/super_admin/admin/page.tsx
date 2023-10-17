@@ -1,6 +1,7 @@
 "use client";
 
 import ActionBar from "@/components/ui/ActionBar";
+import IHTable from "@/components/ui/IHTable";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import { getUserInfo } from "@/services/auth.service";
 import { Button } from "antd";
@@ -31,6 +32,8 @@ const ManageAdminPage = () => {
                     <Button type="primary">Create</Button>
                 </Link>
             </ActionBar>
+
+            <IHTable></IHTable>
         </div>
     )
 }

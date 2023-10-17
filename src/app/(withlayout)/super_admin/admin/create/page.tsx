@@ -4,6 +4,7 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import ActionBar from "@/components/ui/ActionBar";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
+import { useUserSignupMutation } from "@/redux/api/authApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Button, Col, Row } from "antd";
 import Link from "next/link";
@@ -11,13 +12,23 @@ import { SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const CreateAdminPage = () => {
+    const [userSignup] = useUserSignupMutation();
     const { role } = getUserInfo() as any;
     // console.log(role);
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (info: any) => {
         try {
-            console.log(data);
-
+            info["role"] = "admin";
+            console.log(info);
+            const res = await userSignup(info);
+            if (res.data) {
+                // console.log(res);
+                toast("Admin Created successfully");
+                
+            } else if (res.error) {
+                // console.log(res);
+                toast.error("Admin not Created");
+            }
 
         } catch (err) {
             toast.error("err-- task not done");
