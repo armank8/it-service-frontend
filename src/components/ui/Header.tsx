@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { StyledHeaderMenu, StyledMenuIcon, StyledTheIcon } from '../styles/CustomStyles';
+import {  basicFlexBetween, basicFlexCenter } from '../styles/Styles';
 const { Header, Content, Footer } = Layout;
 
 const CommonHeader = () => {
@@ -49,48 +51,38 @@ const CommonHeader = () => {
     ]
 
     return (
-        <Header
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                // justifyContent: 'space-between'
-            }}
+        <Header style={basicFlexBetween}
         >
             <div className="demo-logo" style={{ color: "white", fontWeight: "bold", fontSize: "20px", lineHeight: '0' }}>
                 <Link href='/'>IT-HOUSE</Link>
             </div>
 
-            <div
-                style={{
-                    backgroundColor: "darkorange",
-                    height: 60,
-                    padding: "12px 0 0 12px",
-                    display: "flex",
-                    justifyContent: "right",
-                    paddingRight: "10px"
-                }}
-                className="menuIcon"
-            >
-                <MenuOutlined
-                    style={{ color: "white", fontSize: 30 }}
-                    onClick={() => {
-                        setOpenMenu(true);
-                    }}
-                    className='theIcon'
-                ></MenuOutlined>
-            </div>
-
-            <span className="headerMenu">
+            <StyledHeaderMenu className="headerMenu">
                 <AppMenu></AppMenu>
-            </span>
+            </StyledHeaderMenu>
 
-            <Dropdown menu={{ items }}>
-                <a>
-                    <Space wrap size={16}>
-                        <Avatar size="large" icon={<UserOutlined />} />
-                    </Space>
-                </a>
-            </Dropdown>
+            <div style={basicFlexCenter}>
+                <div>
+                    <Dropdown menu={{ items }}>
+                        <a>
+                            <Space wrap size={16}>
+                                <Avatar size="large" icon={<UserOutlined />} />
+                            </Space>
+                        </a>
+                    </Dropdown>
+                </div>
+
+                <div style={{margin:"14px 0 0 10px"}}>
+                    <StyledTheIcon>
+                        <MenuOutlined style={{ color: "white", fontSize: 30 }}
+                            onClick={() => {
+                                setOpenMenu(true);
+                            }}
+                            className='theIcon'
+                        ></MenuOutlined>
+                    </StyledTheIcon>
+                </div>
+            </div>
 
             <Drawer
                 placement="right"
@@ -99,21 +91,21 @@ const CommonHeader = () => {
                     setOpenMenu(false);
                 }}
                 closable={true}
-                style={{ backgroundColor: "darkorange" }}
+                style={{ backgroundColor: "#001529" }}
             >
                 <AppMenu isInline></AppMenu>
             </Drawer>
 
-            <div style={{}}>
-                {/* <Dropdown menu={{ items }}>
+            {/* <div style={{}}>
+                 <Dropdown menu={{ items }}>
                     <Space style={{ color: "white", fontWeight: "bold", fontSize: "24px" }}>Categories</Space>
-                </Dropdown> */}
+                </Dropdown> 
                 {/* {
                             session?.user ?
                                 <Button onClick={() => signOut()}>Logout</Button> :
                                 <Link href='/login'><Button>Login</Button></Link>
-                        } */}
-            </div>
+                        } 
+            </div> */}
         </Header>
     )
 }
@@ -125,9 +117,9 @@ function AppMenu({ isInline = false }) {
     return (
         <Menu
             style={{
-                backgroundColor: "darkorange",
+                backgroundColor: "#001529",
                 color: "white",
-                fontSize: 24,
+                fontSize: 16,
                 border: "none",
             }}
             mode={isInline ? "inline" : "horizontal"}
@@ -143,10 +135,6 @@ function AppMenu({ isInline = false }) {
                 {
                     label: "About",
                     key: "about",
-                },
-                {
-                    label: "Login",
-                    key: "login",
                 },
             ]}
         ></Menu>
