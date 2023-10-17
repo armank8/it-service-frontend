@@ -22,12 +22,17 @@ const CommonHeader = () => {
     const items: MenuProps['items'] = [
         {
             key: "0",
-            label: <Button onClick={logOut} type="text" danger> LogOut </Button>
+            label: <Button>{role}</Button>
         },
         {
             key: "1",
+            label: <Button onClick={logOut} type="text" danger> LogOut </Button>
+        },
+        {
+            key: "2",
             label: <Link href="/profile"><Button type="text" danger> Profile </Button></Link>
         },
+
     ]
 
     return (
@@ -48,10 +53,10 @@ const CommonHeader = () => {
                 <Link href='/login'>Login</Link>
             </Button>
 
-            <Dropdown menu={{ items }}>
+            <Dropdown menu={{ items }}>               
                 <a>
                     <Space wrap size={16}>
-                        {role}
+
                         <Avatar size="large" icon={<UserOutlined />} />
                     </Space>
                 </a>
