@@ -24,7 +24,6 @@ export const servicesApi: any = baseApi.injectEndpoints({
                 method: "POST",
                 data: data
             }),
-
         }),
     }),
 })
