@@ -2,7 +2,9 @@
 
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
+import FormTextArea from "@/components/Forms/FormTextArea";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb"
+import { useCreateServiceMutation } from "@/redux/api/servicesApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Button, Col, Row } from "antd";
 import toast from "react-hot-toast";
@@ -11,13 +13,14 @@ const CreateServicePage = () => {
   const { role } = getUserInfo() as any;
   console.log(role);
 
+  const [createService] = useCreateServiceMutation();
+
   const onSubmit = async (info: any) => {
     try {
-      info["role"] = "admin";
       console.log(info);
-      // const res = await userSignup(info);
+      const res = await createService(info);
       if (res.data) {
-        // console.log(res);
+        console.log(res);
         toast("Service Created successfully");
 
       } else if (res.error) {
@@ -63,6 +66,14 @@ const CreateServicePage = () => {
                 marginBottom: "10px",
               }}
               >
+                <FormInput type="number" name="id" size="large"
+                  label="Id"
+                />
+              </Col>
+              <Col className="gutter-row" span={8} style={{
+                marginBottom: "10px",
+              }}
+              >
                 <FormInput type="text" name="name" size="large"
                   label="Name"
                 />
@@ -71,7 +82,7 @@ const CreateServicePage = () => {
                 marginBottom: "10px",
               }}
               >
-                <FormInput type="text" name="price" size="large"
+                <FormInput type="number" name="price" size="large"
                   label="Price"
                 />
               </Col>
@@ -89,9 +100,7 @@ const CreateServicePage = () => {
                 marginBottom: "10px",
               }}
               >
-                <FormInput type="text" name="password" size="large"
-                  label="Password"
-                />
+                <FormTextArea name="description"  label="Description" rows={6}></FormTextArea>
               </Col>
 
             </Row>
