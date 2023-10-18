@@ -67,7 +67,7 @@ const CreateServicePage = () => {
               }}
               >
                 <FormInput type="number" name="id" size="large"
-                  label="Id"
+                  label="Id" placeholder="Unique Id - 1,2,3,..."
                 />
               </Col>
               <Col className="gutter-row" span={8} style={{
@@ -75,7 +75,7 @@ const CreateServicePage = () => {
               }}
               >
                 <FormInput type="text" name="name" size="large"
-                  label="Name"
+                  label="Name" placeholder="Service  name"
                 />
               </Col>
               <Col className="gutter-row" span={8} style={{
@@ -91,7 +91,16 @@ const CreateServicePage = () => {
               }}
               >
                 <FormInput type="text" name="category" size="large"
-                  label="Category"
+                  label="Category" placeholder="Repair | Service"
+                />
+              </Col>
+
+              <Col className="gutter-row" span={8} style={{
+                marginBottom: "10px",
+              }}
+              >
+                <FormInput type="text" name="image" size="large"
+                  label="Image" placeholder="Image-link"
                 />
               </Col>
              
