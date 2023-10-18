@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { StyledHeaderMenu, StyledMenuIcon, StyledTheIcon } from '../styles/CustomStyles';
-import {  basicFlexBetween, basicFlexCenter } from '../styles/Styles';
+import { basicFlexBetween, basicFlexCenter } from '../styles/Styles';
 const { Header, Content, Footer } = Layout;
 
 const CommonHeader = () => {
@@ -51,36 +51,41 @@ const CommonHeader = () => {
     ]
 
     return (
-        <Header style={basicFlexBetween}
-        >
-            <div className="demo-logo" style={{ color: "white", fontWeight: "bold", fontSize: "20px", lineHeight: '0' }}>
-                <Link href='/'>IT-HOUSE</Link>
-            </div>
+        <Header>
+            <div style={basicFlexBetween}>
 
-            <StyledHeaderMenu className="headerMenu">
-                <AppMenu></AppMenu>
-            </StyledHeaderMenu>
+                <div style={{ width: "70vw", display: 'flex', alignItems: "center", justifyContent: 'space-between' }}>
+                    <div className="demo-logo" style={{ color: "white", fontWeight: "bold", fontSize: "20px", lineHeight: '0' }}>
+                        <span style={{color: "white"}}><Link href='/'>IT-HOUSE</Link></span>
 
-            <div style={basicFlexCenter}>
-                <div>
-                    <Dropdown menu={{ items }}>
-                        <a>
-                            <Space wrap size={16}>
-                                <Avatar size="large" icon={<UserOutlined />} />
-                            </Space>
-                        </a>
-                    </Dropdown>
+                    </div>
+
+                    <StyledHeaderMenu className="headerMenu">
+                        <AppMenu isInline={false}></AppMenu>
+                    </StyledHeaderMenu>
                 </div>
 
-                <div style={{margin:"14px 0 0 10px"}}>
-                    <StyledTheIcon>
-                        <MenuOutlined style={{ color: "white", fontSize: 30 }}
-                            onClick={() => {
-                                setOpenMenu(true);
-                            }}
-                            className='theIcon'
-                        ></MenuOutlined>
-                    </StyledTheIcon>
+                <div style={basicFlexCenter}>
+                    <div>
+                        <Dropdown menu={{ items }}>
+                            <a>
+                                <Space wrap size={16}>
+                                    <Avatar size="large" icon={<UserOutlined />} />
+                                </Space>
+                            </a>
+                        </Dropdown>
+                    </div>
+
+                    <div style={{ margin: "14px 0 0 10px" }}>
+                        <StyledTheIcon>
+                            <MenuOutlined style={{ color: "white", fontSize: 30 }}
+                                onClick={() => {
+                                    setOpenMenu(true);
+                                }}
+                                className='theIcon'
+                            ></MenuOutlined>
+                        </StyledTheIcon>
+                    </div>
                 </div>
             </div>
 
@@ -93,7 +98,7 @@ const CommonHeader = () => {
                 closable={true}
                 style={{ backgroundColor: "#001529" }}
             >
-                <AppMenu isInline></AppMenu>
+                <AppMenu isInline={true}></AppMenu>
             </Drawer>
 
             {/* <div style={{}}>
@@ -121,12 +126,17 @@ function AppMenu({ isInline = false }) {
                 color: "white",
                 fontSize: 16,
                 border: "none",
+                width: "500px"
             }}
             mode={isInline ? "inline" : "horizontal"}
             items={[
                 {
-                    label: "Home",
+                    label: <Link href={'/'}>Home</Link>,
                     key: "home",
+                },
+                {
+                    label: <Link href={'/profile'}>Profile</Link>,
+                    key: "profile",
                 },
                 {
                     label: "Contact Us",
@@ -135,7 +145,7 @@ function AppMenu({ isInline = false }) {
                 {
                     label: "About",
                     key: "about",
-                },
+                }
             ]}
         ></Menu>
     );
