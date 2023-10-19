@@ -152,6 +152,10 @@ function AppMenu({ isInline = false }) {
                 {
                     label: <Link href={'/blogs'}>Blogs</Link>,
                     key: "blogs",
+                },
+                {
+                    label: <Link href={'/booking'}>Booking</Link>,
+                    key: "booking",
                 }
             ]}
         ></Menu>

@@ -38,4 +38,4 @@ export const bookingApi = baseApi.injectEndpoints({
     }),
 })
 
-export const {  } = bookingApi ;
+export const { useGetBookingsQuery,useGetSingleBookingQuery,useCreateBookingMutation,useDeleteBookingMutation } = bookingApi ;

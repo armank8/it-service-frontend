@@ -5,6 +5,7 @@ import Form from "@/components/Forms/Form";
 import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
+import { useCreateBookingMutation } from "@/redux/api/bookingApi";
 import { useAddReviewMutation, useGetSingleServiceQuery } from "@/redux/api/servicesApi";
 import { getUserInfo } from "@/services/auth.service";
 import { IService } from "@/types/globalTypes";
@@ -17,6 +18,7 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
     const { role, id: userId } = getUserInfo() as any;
     const { data, isLoading } = useGetSingleServiceQuery(id);
     const [addReview] = useAddReviewMutation(id);
+    const [createBooking] = useCreateBookingMutation();
     // console.log(data);
     if (isLoading) {
         return <Loading></Loading>
@@ -60,7 +62,7 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
         }
     };
 
-    const handleBooking = (bookingForm: any) => {
+    const handleBooking = async (bookingForm: any) => {
         try {
             if (!bookingForm.date) {
                 toast.error("Please Select date");
@@ -68,8 +70,27 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
             if (!bookingForm.slot) {
                 toast.error("Please Select slot");
             }
+
+            const bookedData = {
+                "user": `${userId}`,
+                "services": [{
+                    "serviceId": `${service._id}`,
+                    "date": `${bookingForm.date}`,
+                    "slot": `${bookingForm.slot}`
+                }]
+            }
             console.log(bookingForm.date, bookingForm.slot, service._id, userId);
-            
+            console.log(bookedData);
+            const res = await createBooking(bookedData);
+            if (res.data) {
+                console.log(res);
+                toast("Booking Created successfully");
+
+            } else if (res.error) {
+                console.log(res);
+                toast.error("Booking not Created");
+            }
+
         } catch (error) {
             toast.error("err- task not done");
         }
