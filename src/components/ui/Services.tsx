@@ -6,10 +6,15 @@ import { IService } from "@/types/globalTypes";
 import { Button, Card, Col, Row, Space } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { FormEvent, useState } from "react";
 
 const Services = ({ services }: { services: any }) => {
+    const [inputValue, setInputValue] = useState<string | null>('');
+    console.log(inputValue);
+
     const { services: cartServices, total } = useAppSelector((state) => state.service);
     const dispatch = useAppDispatch();
+
     // console.log(services);
     const handleAddToCart = (service: IService) => {
         dispatch(addToCart(service));
@@ -17,8 +22,26 @@ const Services = ({ services }: { services: any }) => {
     const handleRemoveFromCart = (service: IService) => {
         dispatch(removeFromCart(service));
     }
+
+    const searchKey = (event: FormEvent<HTMLFormElement>) => {
+        // console.log(event.target.value);
+        setInputValue(event.target.value);
+    }
+
+    if (inputValue) {
+        services = services.filter((service: any) => (
+            service.name.toLowerCase().includes(inputValue.toLowerCase())
+        ))
+        // console.log(books);
+    };
+
     return (
-        <div style={{ margin: '30px auto',width:'80vw' }}>
+        <div style={{ margin: '10px auto', width: '80vw' }}>
+
+            <div>
+                <input style={{ padding: '10px', width: '200px', margin: '5px auto', display: 'block' }} placeholder="title...... Searching" type="text" name="" id="" onChange={searchKey} />
+            </div>
+
             {/* <Row gutter={[8, 16,24]}></Row> */}
             <Row gutter={[8, 16]}>
                 {
@@ -43,7 +66,7 @@ const Services = ({ services }: { services: any }) => {
 
                                 {
                                     cartServices.find((cart) => cart._id === service._id) ? (
-                                        <Button onClick={()=>handleRemoveFromCart(service)} className="text-red-300 px-2">
+                                        <Button onClick={() => handleRemoveFromCart(service)} className="text-red-300 px-2">
                                             Remove From cart
                                         </Button>
                                     ) : (

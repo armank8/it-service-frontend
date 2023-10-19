@@ -10,7 +10,6 @@ export const servicesApi: any = baseApi.injectEndpoints({
                 method: "GET",
             }),
             providesTags: ['deletion'],
-
         }),
         getSingleService: build.query({
             query: (id) => ({

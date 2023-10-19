@@ -21,7 +21,7 @@ export default function Home() {
   // console.log(servicesData);
   // console.log(blogsData);
 
-  if (servicesLoading) {
+  if (servicesLoading || blogsLoading) {
     return <Loading></Loading>
   }
   // const servicesData = data?.data;
@@ -51,14 +51,6 @@ export default function Home() {
 
       <h1 style={{ margin: '40px auto 20px auto' }}>Our  Service Overview</h1>
       <ServiceOverview></ServiceOverview>
-
-
-
-
-
-
-
-
 
     </main>
   )
