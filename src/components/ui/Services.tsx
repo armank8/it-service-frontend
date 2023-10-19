@@ -6,7 +6,7 @@ import { IService } from "@/types/globalTypes";
 import { Button, Card, Col, Row, Space } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { ChangeEventHandler, FormEvent, useState } from "react";
 
 const Services = ({ services }: { services: any }) => {
     const [inputValue, setInputValue] = useState<string | null>('');
@@ -25,7 +25,9 @@ const Services = ({ services }: { services: any }) => {
 
     const searchKey = (event: FormEvent<HTMLFormElement>) => {
         // console.log(event.target.value);
-        setInputValue(event.target.value);
+        // setInputValue(event.target.value!);
+        const inputElement = event.target as HTMLInputElement;
+        setInputValue(inputElement.value);
     }
 
     if (inputValue) {
@@ -39,7 +41,7 @@ const Services = ({ services }: { services: any }) => {
         <div style={{ margin: '10px auto', width: '80vw' }}>
 
             <div>
-                <input style={{ padding: '10px', width: '200px', margin: '5px auto', display: 'block' }} placeholder="title...... Searching" type="text" name="" id="" onChange={searchKey} />
+                <input style={{ padding: '10px', width: '200px', margin: '5px auto', display: 'block' }} placeholder="title...... Searching" type="text" name="" id="" onChange={searchKey as unknown  as ChangeEventHandler<HTMLInputElement>} />
             </div>
 
             {/* <Row gutter={[8, 16,24]}></Row> */}
