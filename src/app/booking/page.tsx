@@ -22,7 +22,7 @@ const BookingPage = () => {
                 {
                     bookings.map((booking)=>
                     <div key={booking?.user}>
-                            <p>{booking.name}</p>
+                            {/* <p>{booking.name}</p> */}
                     </div>
                     )
                 }

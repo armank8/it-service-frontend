@@ -75,14 +75,17 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
             }
 
             const bookedData = {
-                "user": `${userId}`,
-                "services": [{
-                    "serviceId": `${service._id}`,
-                    "date": `${bookingForm.date}`,
-                    "slot": `${bookingForm.slot}`
-                }]
+                "userId": `${userId}`,
+                "serviceId": `${service._id}`,
+                "name":`${service.name}`,
+                "category":`${service.category}`,
+                "image":`${service.image}`,
+                "price":`${service.price}`,
+                "date": `${bookingForm.date}`,
+                "slot": `${bookingForm.slot}`
+
             }
-            console.log(bookingForm.date, bookingForm.slot, service._id, userId);
+            // console.log(bookingForm.date, bookingForm.slot, service._id, userId);
             console.log(bookedData);
             // const res = await createBooking(bookedData);
             dispatch(addToBooking(bookedData));

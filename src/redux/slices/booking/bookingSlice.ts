@@ -19,21 +19,20 @@ const bookingSlice = createSlice({
     reducers: {
 
         addToBooking: (state, action: PayloadAction<IBooking>) => {
-            // const existing = state.bookings.find((booking) => booking.services.serviceId === action.payload.services.serviceId)
+            const existing = state.bookings.find((booking) => booking.serviceId === action.payload.serviceId)
             // // console.log(existing);
-            // if (existing) {
-            //     toast("already added");
-            //     // console.log("already added");
-            //     // toast({ title: "already added" })
-            // } else {
+            if (existing) {
+                toast("already added");
+                // console.log("already added");
+                // toast({ title: "already added" })
+            } else {
                 state.bookings.push({ ...action.payload });
                 state.total += 1;
                 toast("added to booking list");
-
-            // }
+            }
         },
-        removeFromBooking: (state, action: PayloadAction<IService>) => {
-            state.bookings = state.bookings.filter((booking) => booking._id !== action.payload._id);
+        removeFromBooking: (state, action: PayloadAction<IBooking>) => {
+            state.bookings = state.bookings.filter((booking) => booking.serviceId !== action.payload.serviceId);
             state.total -= 1;
             toast("removed from booking list");
             // existing.finished = true;
