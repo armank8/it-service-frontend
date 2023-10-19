@@ -7,6 +7,8 @@ import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import { useCreateBookingMutation } from "@/redux/api/bookingApi";
 import { useAddReviewMutation, useGetSingleServiceQuery } from "@/redux/api/servicesApi";
+import { useAppDispatch } from "@/redux/hooks";
+import { addToBooking } from "@/redux/slices/booking/bookingSlice";
 import { getUserInfo } from "@/services/auth.service";
 import { IService } from "@/types/globalTypes";
 import { Badge, Button, Card, Col, Row, Tag } from "antd";
@@ -14,6 +16,7 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 
 const ServiceDetailsPage = ({ params }: { params: any }) => {
+    const dispatch = useAppDispatch();
     const id = params.id;
     const { role, id: userId } = getUserInfo() as any;
     const { data, isLoading } = useGetSingleServiceQuery(id);
@@ -81,15 +84,18 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
             }
             console.log(bookingForm.date, bookingForm.slot, service._id, userId);
             console.log(bookedData);
-            const res = await createBooking(bookedData);
-            if (res.data) {
-                console.log(res);
-                toast("Booking Created successfully");
+            // const res = await createBooking(bookedData);
+            dispatch(addToBooking(bookedData));
+            toast("Booking Created successfully");
 
-            } else if (res.error) {
-                console.log(res);
-                toast.error("Booking not Created");
-            }
+            // if (res.data) {
+            //     console.log(res);
+            //     toast("Booking Created successfully");
+
+            // } else if (res.error) {
+            //     console.log(res);
+            //     toast.error("Booking not Created");
+            // }
 
         } catch (error) {
             toast.error("err- task not done");

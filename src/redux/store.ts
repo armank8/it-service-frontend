@@ -2,9 +2,11 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 // import { reducer } from './rootReducer';
 import { baseApi } from './api/baseApi';
 import serviceSlice from './slices/services/serviceSlice';
+import bookingSlice from './slices/booking/bookingSlice';
 
 const rootReducer = combineReducers({
     service: serviceSlice,
+    booking:bookingSlice,
     [baseApi.reducerPath]: baseApi.reducer,
 });
 
@@ -14,6 +16,7 @@ const localStorageMiddleware = (store) => (next) => (action) => {
     // Save the relevant state to local storage
     const stateToPersist = {
         service: store.getState().service,
+        booking: store.getState().booking,
         
     };
 
