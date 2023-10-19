@@ -1,3 +1,5 @@
+"use client";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeFromCart } from "@/redux/slices/services/serviceSlice";
 import { IService } from "@/types/globalTypes";

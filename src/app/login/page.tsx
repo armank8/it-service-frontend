@@ -31,15 +31,16 @@ const LoginPage = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      // console.log(data);
+      console.log(data);
       const res = await userLogin({ ...data }).unwrap();
-      // console.log(res);
-      if(res?.accessToken){
+      console.log(res);
+      if (res?.accessToken) {
+        storeUserInfo({ accessToken: res?.accessToken })
         toast("User logged in successfully");
         router.push('/profile');
+      }else{
+        toast.error("Please Insert valid email and password");
       }
-      storeUserInfo({ accessToken: res?.accessToken })
-
 
     } catch (err) {
       toast.error("User not logged in");

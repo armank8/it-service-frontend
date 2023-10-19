@@ -89,7 +89,7 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
             console.log(bookedData);
             // const res = await createBooking(bookedData);
             dispatch(addToBooking(bookedData));
-            toast("Booking Created successfully");
+            // toast("Booking Created successfully");
 
             // if (res.data) {
             //     console.log(res);
