@@ -3,6 +3,7 @@
     "id": "1",
     "name": "Hardware Repair and Replacement",
     "price": "5000",
+    "image":"https://i.ibb.co/C8G3v2C/repair-image.jpg",
     "description": "This involves fixing or replacing faulty hardware components such as hard drives, memory modules, graphics cards, motherboards, and power supplies.",
     "rating": "5",
     "reviews": [
@@ -16,6 +17,7 @@
     "id": "2",
     "name": "Software Troubleshooting",
     "price": "7000",
+    "image":"https://i.ibb.co/K9qRDLP/service-image.jpg",
     "description": "IT professionals diagnose and resolve software-related issues, including operating system errors, driver problems, and software conflicts. They can also help with software installation, updates, and configuration.",
     "rating": "5",
     "reviews": [
@@ -29,6 +31,7 @@
     "id": "3",
     "name": "Virus and Malware Removal",
     "price": "9000",
+    "image":"https://i.ibb.co/K9qRDLP/service-image.jpg",
     "description": "IT experts can detect and remove viruses, spyware, and other malicious software from computers and networks to ensure data security.",
     "rating": "5",
     "reviews": [
@@ -37,8 +40,50 @@
       "best service in the town"
     ],
     "category": "Service"
+  },
+  {
+    "id": "4",
+    "name": "Storage repair",
+    "price": "9000",
+    "image":"https://i.ibb.co/C8G3v2C/repair-image.jpg",
+    "description": "IT experts can detect and remove viruses, spyware, and other malicious software from computers and networks to ensure data security.",
+    "rating": "5",
+    "reviews": [
+      "Made my pc almost new",
+      "Great Service",
+      "best service in the town"
+    ],
+    "category": "Repair"
+  },
+  {
+    "id": "5",
+    "name": "Data Recovery",
+    "price": "9000",
+    "image":"https://i.ibb.co/K9qRDLP/service-image.jpg",
+    "description": "In cases of data loss due to hardware failure or accidental deletion, IT professionals can attempt to recover lost data from storage devices.",
+    "rating": "5",
+    "reviews": [
+      "Made my pc almost new",
+      "Great Service",
+      "best service in the town"
+    ],
+    "category": "Service"
+  },
+  {
+    "id": "6",
+    "name": "Mobile Device Management",
+    "price": "9000",
+    "image":"https://i.ibb.co/C8G3v2C/repair-image.jpg",
+    "description": " With the proliferation of mobile devices, IT services can include managing and securing smartphones and tablets within a corporate environment.",
+    "rating": "5",
+    "reviews": [
+      "Made my pc almost new",
+      "Great Service",
+      "best service in the town"
+    ],
+    "category": "Repair"
   }
-],
+]
 
 [
   {

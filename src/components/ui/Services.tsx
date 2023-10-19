@@ -18,7 +18,7 @@ const Services = ({ services }: { services: any }) => {
         dispatch(removeFromCart(service));
     }
     return (
-        <div style={{ margin: '30px auto' }}>
+        <div style={{ margin: '30px auto',width:'80vw' }}>
             {/* <Row gutter={[8, 16,24]}></Row> */}
             <Row gutter={[8, 16]}>
                 {
@@ -29,7 +29,7 @@ const Services = ({ services }: { services: any }) => {
                                 <Link href={`/services/${service?._id}`} style={{ color: 'black' }}>
                                     <h1 style={{ textAlign: 'center' }}>{service?.name}</h1>
                                     <Space style={{ display: 'flex', justifyContent: "center" }}>
-                                        {/* <Image src={service?.image} style={{}} alt='' width={200} height={200}></Image> */}
+                                        <Image src={service?.image} style={{}} alt='' width={200} height={200}></Image>
                                     </Space>
 
                                     <Space style={{ display: 'flex', justifyContent: 'space-between', margin: '0 100px' }}>

@@ -146,12 +146,12 @@ function AppMenu({ isInline = false }) {
                     key: "profile",
                 },
                 {
-                    label: "Contact Us",
-                    key: "contact Us",
+                    label: <Link href={'/services'}>Services</Link>,
+                    key: "services",
                 },
                 {
-                    label: "About",
-                    key: "about",
+                    label: <Link href={'/blogs'}>Blogs</Link>,
+                    key: "blogs",
                 }
             ]}
         ></Menu>

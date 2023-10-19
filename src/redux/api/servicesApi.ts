@@ -16,6 +16,7 @@ export const servicesApi: any = baseApi.injectEndpoints({
                 url: `${SERVICES_URL}/${id}`,
                 method: "GET",
             }),
+            providesTags: ['comments'],
 
         }),
         createService: build.mutation({
@@ -34,6 +35,7 @@ export const servicesApi: any = baseApi.injectEndpoints({
                     data: info,
                 };
             },
+            invalidatesTags: ['comments']
         }),
     }),
 })
