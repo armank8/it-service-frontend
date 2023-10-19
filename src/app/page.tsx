@@ -9,6 +9,8 @@ import Services from '@/components/ui/Services';
 import { useGetBlogsQuery } from '@/redux/api/blogApi';
 import Blogs from '@/components/ui/Blogs';
 import Faq from '@/components/ui/Faq';
+import ClientReview from '@/components/ui/ClientReview';
+import UpcomingServices from '@/components/ui/Upcoming Services';
 
 
 export default function Home() {
@@ -32,14 +34,19 @@ export default function Home() {
         servicesData && <Services services={servicesData}></Services>
       }
 
-      <h1>Our Tech Blogs</h1>
+      <h1 style={{ margin: '30px auto' }}>Our Tech Blogs</h1>
       {
         blogsData && <Blogs blogs={blogsData}></Blogs>
       }
 
-      <h1 style={{margin:'20px auto'}}>Frequently Asked Questions</h1>
+      <h1 style={{ margin: '40px auto 20px auto' }}>Frequently Asked Questions</h1>
       <Faq ></Faq>
 
+      <h1 style={{ margin: '40px auto 20px auto' }}>What our customers say about us</h1>
+      <ClientReview></ClientReview>
+
+      <h1 style={{ margin: '40px auto 20px auto' }}>Our Upcoming Services</h1>
+      <UpcomingServices></UpcomingServices>
 
 
 
