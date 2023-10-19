@@ -11,6 +11,7 @@ import { Button } from "antd"
 import toast from "react-hot-toast"
 import Loading from "../loading";
 import { useCreateBookingMutation } from '@/redux/api/bookingApi';
+import { Response } from '@/types/globalTypes';
 
 const BookingPage = () => {
     const [createBooking] = useCreateBookingMutation();
@@ -29,7 +30,7 @@ const BookingPage = () => {
         // bookings["userId"]=userId;
 
         console.log(bookings);
-        const res = await createBooking(bookings);
+        const res:Response = await createBooking(bookings);
 
         // toast("Booking Created successfully");
 

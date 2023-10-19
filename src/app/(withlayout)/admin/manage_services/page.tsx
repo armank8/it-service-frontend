@@ -7,13 +7,27 @@ import { useGetServicesQuery } from "@/redux/api/servicesApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Button } from "antd"
 import Link from "next/link"
+import { useState } from "react";
 
 const ManageServicesPage = () => {
+  const query: Record<string, any> = {};
+
+  const [page, setPage] = useState<number>(1);
+  const [size, setSize] = useState<number>(10);
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+
   const { data, isLoading } = useGetServicesQuery(undefined);
   console.log(data);
   if (isLoading) {
     return <Loading></Loading>
   }
+
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
+
   const { role } = getUserInfo() as any;
   // console.log(role);
 
@@ -51,14 +65,14 @@ const ManageServicesPage = () => {
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
-    // setPage(page);
-    // setSize(pageSize);
+    setPage(page);
+    setSize(pageSize);
   };
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     // console.log(order, field);
-    // setSortBy(field as string);
-    // setSortOrder(order === "ascend" ? "asc" : "desc");
+    setSortBy(field as string);
+    setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
 
@@ -86,16 +100,14 @@ const ManageServicesPage = () => {
         loading={isLoading}
         columns={columns}
         dataSource={data}
-        // pageSize={size}
-        // totalPages={meta?.total}
+        pageSize={size}
+        totalPages={5}
         showSizeChanger={true}
         onPaginationChange={onPaginationChange}
         onTableChange={onTableChange}
         showPagination={true}
-      >
-
-      </IHTable>
-
+      />
+      
     </div>
   )
 }

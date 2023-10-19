@@ -38,8 +38,8 @@ const IHTable = ({
     return (
         <Table loading={loading} columns={columns} dataSource={dataSource}
             pagination={paginationConfig} onChange={onTableChange}
-        >IHTable</Table>
+        />
     )
 }
 
-export default IHTable
+export default IHTable;

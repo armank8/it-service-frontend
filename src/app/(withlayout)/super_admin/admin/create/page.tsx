@@ -6,6 +6,7 @@ import ActionBar from "@/components/ui/ActionBar";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import { useUserSignupMutation } from "@/redux/api/authApi";
 import { getUserInfo } from "@/services/auth.service";
+import { Response } from "@/types/globalTypes";
 import { Button, Col, Row } from "antd";
 import Link from "next/link";
 import { SubmitHandler } from "react-hook-form";
@@ -20,7 +21,7 @@ const CreateAdminPage = () => {
         try {
             info["role"] = "admin";
             console.log(info);
-            const res = await userSignup(info);
+            const res: Response = await userSignup(info);
             if (res.data) {
                 // console.log(res);
                 toast("Admin Created successfully");

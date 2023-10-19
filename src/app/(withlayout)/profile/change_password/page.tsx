@@ -6,9 +6,12 @@ import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import { useChangePasswordMutation } from "@/redux/api/authApi";
 import { useGetSingleUserQuery } from "@/redux/api/userApi";
 import { getUserInfo } from "@/services/auth.service";
+import { Response } from "@/types/globalTypes";
 import { Button, Col, Row } from "antd";
 import toast from "react-hot-toast";
 // import { Form } from "antd";
+
+
 
 const ChangePasswordPage = () => {
     const { role, id } = getUserInfo() as any;
@@ -20,12 +23,13 @@ const ChangePasswordPage = () => {
     const onSubmit = async (info: any) => {
         try {
             console.log(info);
-            const res = await changePassword({ id, info });
+            const res: Response = await changePassword({ id, info });
+
             if (res.data) {
                 // console.log(res);
                 toast.success("Password changed successfully");
 
-            } else if (res.error) {
+            } else if (res.error!) {
                 // console.log(res);
                 toast.error("Password not changed ");
             }

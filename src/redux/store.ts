@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
     [baseApi.reducerPath]: baseApi.reducer,
 });
 
-const localStorageMiddleware = (store) => (next) => (action) => {
+const localStorageMiddleware = (store:any) => (next:any) => (action:any) => {
     const result = next(action);
 
     // Save the relevant state to local storage

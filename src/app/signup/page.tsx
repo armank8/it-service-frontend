@@ -8,6 +8,7 @@ import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation, useUserSignupMutation } from "@/redux/api/authApi";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { Response } from "@/types/globalTypes";
 
 type FormValues = {
   email: string;
@@ -23,7 +24,7 @@ const SignupPage = () => {
     try {
       // console.log(info);
       info["role"] = "user";
-      const res = await userSignup(info);
+      const res:Response = await userSignup(info);
       if (res.data) {
         // console.log(res);
         toast("User Created successfully");

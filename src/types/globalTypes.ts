@@ -20,4 +20,9 @@ export interface IBooking {
     price: string;
     date: string;
     slot: string;
+};
+
+export interface Response {
+    data?: any;
+    error?: any;
 }
