@@ -11,6 +11,7 @@ import Blogs from '@/components/ui/Blogs';
 import Faq from '@/components/ui/Faq';
 import ClientReview from '@/components/ui/ClientReview';
 import UpcomingServices from '@/components/ui/Upcoming Services';
+import ServiceOverview from '@/components/ui/Overview';
 
 
 export default function Home() {
@@ -47,6 +48,9 @@ export default function Home() {
 
       <h1 style={{ margin: '40px auto 20px auto' }}>Our Upcoming Services</h1>
       <UpcomingServices></UpcomingServices>
+
+      <h1 style={{ margin: '40px auto 20px auto' }}>Our  Service Overview</h1>
+      <ServiceOverview></ServiceOverview>
 
 
 
