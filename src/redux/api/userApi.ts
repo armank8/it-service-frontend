@@ -10,7 +10,7 @@ export const userApi = baseApi.injectEndpoints({
                 method: "GET",
 
             }),
-            // invalidatesTags: ["user"]
+            providesTags: ["user"]
         }),
         getSingleUser: build.query({
             query: (id) => ({
@@ -27,7 +27,15 @@ export const userApi = baseApi.injectEndpoints({
             }),
             // invalidatesTags: ["user"]
         }),
+
+        deleteUser: build.mutation({
+            query: (id) => ({
+                url: `${USERS_URL}/${id}/delete`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["user"]
+        }),
     }),
 })
 
-export const { useGetUsersQuery, useGetSingleUserQuery,useUpdateSingleUserMutation } = userApi;
+export const { useGetUsersQuery, useGetSingleUserQuery, useUpdateSingleUserMutation, useDeleteUserMutation } = userApi;

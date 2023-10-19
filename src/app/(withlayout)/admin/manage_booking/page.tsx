@@ -3,62 +3,59 @@
 import Loading from "@/app/loading";
 import IHTable from "@/components/ui/IHTable";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
-import { useDeleteServiceMutation, useGetServicesQuery } from "@/redux/api/servicesApi";
+import { useDeleteBookingMutation, useGetBookingsQuery } from "@/redux/api/bookingApi";
+import { useDeleteUserMutation, useGetUsersQuery } from "@/redux/api/userApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Response } from "@/types/globalTypes";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button } from "antd"
 import Link from "next/link"
-import { useState } from "react";
 import toast from "react-hot-toast";
 
-const ManageServicesPage = () => {
-  const query: Record<string, any> = {};
+const ManageBookingPage = () => {
 
-  const [page, setPage] = useState<number>(1);
-  const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>("");
-  const [sortOrder, setSortOrder] = useState<string>("");
-
-  const { data, isLoading } = useGetServicesQuery(undefined);
-  const [deleteService] = useDeleteServiceMutation();
-
-  console.log(data);
+  const { role } = getUserInfo() as any;
+  // console.log(role);
+  const { data, isLoading } = useGetBookingsQuery(undefined);
+  const [deleteBooking] = useDeleteBookingMutation();
+  // console.log(data);
   if (isLoading) {
     return <Loading></Loading>
   }
 
-  query["limit"] = size;
-  query["page"] = page;
-  query["sortBy"] = sortBy;
-  query["sortOrder"] = sortOrder;
-
-  const { role } = getUserInfo() as any;
-  // console.log(role);
-
   const columns = [
+    {
+      title: 'UserId',
+      dataIndex: 'userId',
+      key: 'userId',
+    },
     {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Description',
-      dataIndex: 'description',
-      key: 'description',
-    },
-    {
-      title: 'Category',
-      dataIndex: 'category',
-      key: 'category',
+      title: 'Slot',
+      dataIndex: 'slot',
+      key: 'slot',
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
-      // sorter: true
-      sorter: (a: any, b: any) => a.age - b.age
     },
+    {
+      title: 'CreatedAt',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+    },
+    // {
+    //     title: 'Age',
+    //     dataIndex: 'age',
+    //     key: 'age',
+    //     // sorter: true
+    //     sorter: (a: any, b: any) => a.age - b.age
+    // },
     {
       title: 'Action',
       render: function (data: any) {
@@ -71,31 +68,30 @@ const ManageServicesPage = () => {
   ];
 
   const handleDelete = async (data: any) => {
-    console.log(data);
-    const res: Response = await deleteService(data._id);
+    // console.log(data);
+    const res: Response = await deleteBooking(data._id);
 
     if (res.data) {
       console.log(res);
-      toast("Service Deleted Successfully");
+      toast("Booking Deleted Successfully");
 
     } else if (res.error) {
       console.log(res);
-      toast.error("Service Not Deleted ");
+      toast.error("Booking Not Deleted ");
     }
   };
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
-    setPage(page);
-    setSize(pageSize);
+    // setPage(page);
+    // setSize(pageSize);
   };
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     // console.log(order, field);
-    setSortBy(field as string);
-    setSortOrder(order === "ascend" ? "asc" : "desc");
+    // setSortBy(field as string);
+    // setSortOrder(order === "ascend" ? "asc" : "desc");
   };
-
 
   return (
     <div>
@@ -106,31 +102,29 @@ const ManageServicesPage = () => {
             link: `/${role}`,
           },
           {
-            label: `${role}/manage_services`,
-            link: `/${role}/manage_services`,
+            label: `${role}/manage_booking`,
+            link: `/${role}/manage_booking`,
           },
         ]}
       />
-      <h1>Manage Services Page</h1>
-      <Link href="/admin/manage_services/create">
-        <Button type="primary">Create Service</Button>
-      </Link>
+      <h1>Manage Booking Page</h1>
 
-      <h2>Services List</h2>
+      <h2>Booking List</h2>
       <IHTable
         loading={isLoading}
         columns={columns}
         dataSource={data}
-        pageSize={size}
-        totalPages={5}
+        // pageSize={size}
+        // totalPages={meta?.total}
         showSizeChanger={true}
         onPaginationChange={onPaginationChange}
         onTableChange={onTableChange}
         showPagination={true}
       />
 
+
     </div>
   )
 }
 
-export default ManageServicesPage;
+export default ManageBookingPage;

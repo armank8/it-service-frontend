@@ -10,7 +10,7 @@ export const bookingApi = baseApi.injectEndpoints({
                 method: "GET",
 
             }),
-            // invalidatesTags: ["user"]
+            providesTags: ["booking"]
         }),
         getSingleBooking: build.query({
             query: (id) => ({
@@ -30,10 +30,10 @@ export const bookingApi = baseApi.injectEndpoints({
        
         deleteBooking: build.mutation({
             query: (id) => ({
-                url: `${BOOKING_URL}/${id}`,
+                url: `${BOOKING_URL}/${id}/delete`,
                 method: "DELETE",
             }),
-            // invalidatesTags: ["user"]
+            invalidatesTags: ["booking"]
         }),
     }),
 })

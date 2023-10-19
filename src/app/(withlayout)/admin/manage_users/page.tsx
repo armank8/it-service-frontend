@@ -3,36 +3,40 @@
 import Loading from "@/app/loading";
 import IHTable from "@/components/ui/IHTable";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
-import { useGetUsersQuery } from "@/redux/api/userApi";
+import { useDeleteUserMutation, useGetUsersQuery } from "@/redux/api/userApi";
 import { getUserInfo } from "@/services/auth.service";
+import { Response } from "@/types/globalTypes";
+import { DeleteOutlined } from "@ant-design/icons";
 import { Button } from "antd"
 import Link from "next/link"
+import toast from "react-hot-toast";
 
 const ManageUsersPage = () => {
 
   const { role } = getUserInfo() as any;
   // console.log(role);
-  const {data,isLoading} = useGetUsersQuery(undefined);
-  console.log(data);
+  const { data, isLoading } = useGetUsersQuery(undefined);
+  const [deleteUser] = useDeleteUserMutation();
+  // console.log(data);
   if (isLoading) {
     return <Loading></Loading>
   }
 
   const columns = [
     {
-        title: 'Id',
-        dataIndex: '_id',
-        key: '_id',
+      title: 'Id',
+      dataIndex: '_id',
+      key: '_id',
     },
     {
-        title: 'Email',
-        dataIndex: 'email',
-        key: 'email',
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
     },
     {
-        title: 'Role',
-        dataIndex: 'role',
-        key: 'role',
+      title: 'Role',
+      dataIndex: 'role',
+      key: 'role',
     },
     // {
     //     title: 'Age',
@@ -42,13 +46,29 @@ const ManageUsersPage = () => {
     //     sorter: (a: any, b: any) => a.age - b.age
     // },
     {
-        title: 'Action',
-        render: function (data: any) {
-            return <Button onClick={() => console.log(data)} type="primary" danger>X</Button>
-        }
+      title: 'Action',
+      render: function (data: any) {
+        return <Button onClick={() => handleDelete(data)} type="primary" danger>
+          <DeleteOutlined />
+        </Button>
+      }
 
     },
-];
+  ];
+
+  const handleDelete = async (data: any) => {
+    // console.log(data._id);
+    const res: Response = await deleteUser(data._id);
+
+    if (res.data) {
+      console.log(res);
+      toast("User Deleted Successfully");
+
+    } else if (res.error) {
+      console.log(res);
+      toast.error("User Not Deleted ");
+    }
+  };
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -76,7 +96,7 @@ const ManageUsersPage = () => {
           },
         ]}
       />
-      <h1>Manage Users Page</h1>          
+      <h1>Manage Users Page</h1>
 
       <h2>Users List</h2>
       <IHTable
@@ -90,7 +110,7 @@ const ManageUsersPage = () => {
         onTableChange={onTableChange}
         showPagination={true}
       />
-      
+
 
     </div>
   )
