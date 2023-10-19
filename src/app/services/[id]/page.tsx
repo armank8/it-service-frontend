@@ -2,14 +2,19 @@
 
 import Loading from "@/app/loading";
 import Form from "@/components/Forms/Form";
+import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
+import FormSelectField from "@/components/Forms/FormSelectField";
 import { useAddReviewMutation, useGetSingleServiceQuery } from "@/redux/api/servicesApi";
+import { getUserInfo } from "@/services/auth.service";
+import { IService } from "@/types/globalTypes";
 import { Badge, Button, Card, Col, Row, Tag } from "antd";
 import Image from "next/image";
 import toast from "react-hot-toast";
 
 const ServiceDetailsPage = ({ params }: { params: any }) => {
     const id = params.id;
+    const { role, id: userId } = getUserInfo() as any;
     const { data, isLoading } = useGetSingleServiceQuery(id);
     const [addReview] = useAddReviewMutation(id);
     // console.log(data);
@@ -21,12 +26,26 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
     const service = data[0];
     // console.log(data,service);
 
+    const slotOptions = [
+        {
+            label: '10.00 AM',
+            value: '10.00 AM',
+        },
+        {
+            label: '1.00 PM',
+            value: '1.00 PM',
+        },
+        {
+            label: '4.00 PM',
+            value: '4.00 PM',
+        }
+    ]
+
     const onSubmit = async (info: any) => {
         try {
-
             // console.log(id, info);
             const res = await addReview({ id, info });
-            // console.log(res);
+            // // console.log(res);
             if (res.data) {
                 // console.log(res);
                 toast("Review Created successfully");
@@ -41,11 +60,26 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
         }
     };
 
+    const handleBooking = (bookingForm: any) => {
+        try {
+            if (!bookingForm.date) {
+                toast.error("Please Select date");
+            }
+            if (!bookingForm.slot) {
+                toast.error("Please Select slot");
+            }
+            console.log(bookingForm.date, bookingForm.slot, service._id, userId);
+            
+        } catch (error) {
+            toast.error("err- task not done");
+        }
+    }
+
     return (
-        <div style={{ width: '70vw', margin: '0 auto' }}>
+        <div style={{ width: '70vw', margin: '20px auto' }}>
             <Row gutter={[16, 16]}>
                 <Col span={12}>
-                    {/* <Image src={service?.image} width={500} height={500} alt="product-image"></Image> */}
+                    <Image src={service?.image} width={500} height={500} alt="product-image"></Image>
                 </Col>
 
                 <Col span={12}>
@@ -69,6 +103,36 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
                                     <p style={{ margin: '0' }} key={review}>{review}</p>
                                 ))
                             }
+                        </div>
+                        <div>
+                            <h2>Select slot and date</h2>
+                            <Form submitHandler={handleBooking}>
+                                <div style={{
+                                    border: "1px solid #d9d9d9",
+                                    borderRadius: "5px",
+                                    padding: "15px",
+                                    marginBottom: "10px",
+                                }}>
+                                    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                                        <Col className="gutter-row" span={12} style={{
+                                            marginBottom: "10px",
+                                        }}
+                                        >
+                                            <FormDatePicker name="date" label="Select Date"></FormDatePicker>
+                                        </Col>
+                                        <Col className="gutter-row" span={12} style={{
+                                            marginBottom: "10px",
+                                        }}
+                                        >
+                                            <FormSelectField name="slot" label='Select Slot' options={slotOptions}></FormSelectField>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <Button htmlType="submit" type="primary" danger>
+                                    Book Service
+                                </Button>
+
+                            </Form>
                         </div>
 
                         <div>
