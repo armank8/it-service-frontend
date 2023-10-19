@@ -5,7 +5,9 @@ import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb"
 import { useCreateServiceMutation } from "@/redux/api/servicesApi";
+import { serviceSchema } from "@/schemas/service";
 import { getUserInfo } from "@/services/auth.service";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row } from "antd";
 import toast from "react-hot-toast";
 
@@ -54,7 +56,7 @@ const CreateServicePage = () => {
       <h1>Create Service Page</h1>
 
       <div>
-        <Form submitHandler={onSubmit}>
+        <Form submitHandler={onSubmit} resolver={yupResolver(serviceSchema)}>
           <div style={{
             border: "1px solid #d9d9d9",
             borderRadius: "5px",

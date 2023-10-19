@@ -10,6 +10,8 @@ import { useUserLoginMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { getUserInfo, isLoggedIn, storeUserInfo } from "@/services/auth.service";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { authSchema } from "@/schemas/auth";
 // import { Metadata } from "next";
 
 // export const metadata: Metadata = {
@@ -66,7 +68,7 @@ const LoginPage = () => {
           First login your account
         </h1>
         <div>
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} resolver={yupResolver(authSchema)}>
             <div>
               <FormInput name="email" type="text" size="large" label="Email" />
             </div>
