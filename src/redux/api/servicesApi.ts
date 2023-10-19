@@ -25,7 +25,17 @@ export const servicesApi: any = baseApi.injectEndpoints({
                 data: data
             }),
         }),
+        addReview: build.mutation({
+            query: ({ id, info }) => {
+                console.log(id, info); // You can log the id and data here
+                return {
+                    url: `${SERVICES_URL}/${id}/review`,
+                    method: "POST",
+                    data: info,
+                };
+            },
+        }),
     }),
 })
 
-export const { useGetServicesQuery, useGetSingleServiceQuery, useCreateServiceMutation } = servicesApi;
+export const { useGetServicesQuery, useGetSingleServiceQuery, useCreateServiceMutation,useAddReviewMutation } = servicesApi;
