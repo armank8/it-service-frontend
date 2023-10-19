@@ -86,7 +86,7 @@ const ServiceDetailsPage = ({ params }: { params: any }) => {
 
             }
             // console.log(bookingForm.date, bookingForm.slot, service._id, userId);
-            console.log(bookedData);
+            // console.log(bookedData);
             // const res = await createBooking(bookedData);
             dispatch(addToBooking(bookedData));
             // toast("Booking Created successfully");

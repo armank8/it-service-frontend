@@ -11,7 +11,7 @@ export interface IService {
 
 export interface IBooking {
     _id?: string;
-    userId: string;
+    userId?: string;
     serviceId: string;
     name: string;
 
