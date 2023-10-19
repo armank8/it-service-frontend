@@ -9,6 +9,7 @@ export const servicesApi: any = baseApi.injectEndpoints({
                 url: `${SERVICES_URL}`,
                 method: "GET",
             }),
+            providesTags: ['deletion'],
 
         }),
         getSingleService: build.query({
@@ -37,7 +38,15 @@ export const servicesApi: any = baseApi.injectEndpoints({
             },
             invalidatesTags: ['comments']
         }),
+        deleteService: build.mutation({
+            query: (id) => ({
+                url: `${SERVICES_URL}/${id}/delete`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ['deletion'],
+
+        }),
     }),
 })
 
-export const { useGetServicesQuery, useGetSingleServiceQuery, useCreateServiceMutation,useAddReviewMutation } = servicesApi;
+export const { useGetServicesQuery, useGetSingleServiceQuery, useCreateServiceMutation,useAddReviewMutation,useDeleteServiceMutation } = servicesApi;

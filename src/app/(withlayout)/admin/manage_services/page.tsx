@@ -3,11 +3,14 @@
 import Loading from "@/app/loading";
 import IHTable from "@/components/ui/IHTable";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
-import { useGetServicesQuery } from "@/redux/api/servicesApi";
+import { useDeleteServiceMutation, useGetServicesQuery } from "@/redux/api/servicesApi";
 import { getUserInfo } from "@/services/auth.service";
+import { Response } from "@/types/globalTypes";
+import { DeleteOutlined } from "@ant-design/icons";
 import { Button } from "antd"
 import Link from "next/link"
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const ManageServicesPage = () => {
   const query: Record<string, any> = {};
@@ -18,6 +21,8 @@ const ManageServicesPage = () => {
   const [sortOrder, setSortOrder] = useState<string>("");
 
   const { data, isLoading } = useGetServicesQuery(undefined);
+  const [deleteService] = useDeleteServiceMutation();
+
   console.log(data);
   if (isLoading) {
     return <Loading></Loading>
@@ -57,11 +62,27 @@ const ManageServicesPage = () => {
     {
       title: 'Action',
       render: function (data: any) {
-        return <Button onClick={() => console.log(data)} type="primary" danger>X</Button>
+        return <Button onClick={() => handleDelete(data)} type="primary" danger>
+          <DeleteOutlined />
+        </Button>
       }
 
     },
   ];
+
+  const handleDelete = async (data: any) => {
+    console.log(data);
+    const res: Response = await deleteService(data._id);
+
+    if (res.data) {
+      console.log(res);
+      toast("Service Deleted Successfully");
+
+    } else if (res.error) {
+      console.log(res);
+      toast.error("Service Not Deleted ");
+    }
+  }
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -107,7 +128,7 @@ const ManageServicesPage = () => {
         onTableChange={onTableChange}
         showPagination={true}
       />
-      
+
     </div>
   )
 }
