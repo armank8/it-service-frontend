@@ -8,3 +8,14 @@ export interface IService{
     description:string;
     reviews?:string[];
 }
+
+export interface IBooking{
+    _id?:string;
+    
+    user:string;    
+    services:{
+        serviceId:string;
+        date:string;
+        slot:string;
+    }[]
+}
