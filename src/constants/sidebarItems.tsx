@@ -64,22 +64,15 @@ export const sidebarItems = (role: string) => {
       label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
       icon: <TableOutlined />,
       key: `/${role}/admin`,
-    },
-    {
-      label: <Link href={`/${role}/user`}>Manage User</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/user`,
-    },
-    
-    
+    },          
   ];
 
   const userSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     {
-      label: <Link href={`/${role}/booking`}>booking</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/booking`,
+      label: <Link href={`/${role}/manage_booking`}>Manage Booking </Link>,
+      icon: <TableOutlined />,     
+      key: `/${role}/manage_booking`,
     },
     {
       label: <Link href={`/${role}/history`}>History</Link>,
