@@ -12,6 +12,7 @@ import Faq from '@/components/ui/Faq';
 import ClientReview from '@/components/ui/ClientReview';
 import UpcomingServices from '@/components/ui/Upcoming Services';
 import ServiceOverview from '@/components/ui/Overview';
+import HeroSection from '@/components/homepage-ui/HeroSection';
 
 
 export default function Home() {
@@ -21,16 +22,17 @@ export default function Home() {
   // console.log(servicesData);
   // console.log(blogsData);
 
-  if (servicesLoading || blogsLoading) {
-    return <Loading></Loading>
-  }
+  // if (servicesLoading || blogsLoading) {
+  //   return <Loading></Loading>
+  // }
   // const servicesData = data?.data;
   // const servicesData = data;
   // console.log(servicesData);
 
   return (
     <main className={styles.main}>
-      <h1>Our Exclusive Services</h1>
+      <HeroSection></HeroSection>
+      {/* <h1>Our Exclusive Services</h1>
       {
         servicesData && <Services services={servicesData}></Services>
       }
@@ -38,7 +40,7 @@ export default function Home() {
       <h1 style={{ margin: '30px auto' }}>Our Tech Blogs</h1>
       {
         blogsData && <Blogs blogs={blogsData}></Blogs>
-      }
+      } */}
 
       <h1 style={{ margin: '40px auto 20px auto' }}>Frequently Asked Questions</h1>
       <Faq ></Faq>
