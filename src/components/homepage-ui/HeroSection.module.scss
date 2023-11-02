@@ -1,0 +1,49 @@
+.heroSection {
+  min-height: 60vh;
+  /* margin:0 -10%; */
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  position: relative;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, .3) ), url('../../assets//service1.jpg') ;
+  background-size:cover;
+  color:white;
+
+  p{
+    color: white;
+  }
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color:white;
+}
+
+.rightSide {
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}
+
+@media (max-width: 900px) {
+  .heroSection {
+    grid-template-columns: 1fr;
+  }
+  .leftSide,
+  .rightSide {
+    position: static;
+    /* margin: 20px 0; */
+  }
+
+  .leftSide{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
