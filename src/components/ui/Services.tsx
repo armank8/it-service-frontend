@@ -52,7 +52,7 @@ const Services = ({ services }: { services: any }) => {
 
                             <Card bordered={true} hoverable style={{ color: 'black' }}>
                                 <Link href={`/services/${service?._id}`} style={{ color: 'black' }}>
-                                    <h1 style={{ textAlign: 'center' }}>{service?.name}</h1>
+                                    <h2 style={{ textAlign: 'center' }}>{service?.name}</h2>
                                     <Space style={{ display: 'flex', justifyContent: "center" }}>
                                         <Image src={service?.image} style={{}} alt='' width={200} height={200}></Image>
                                     </Space>

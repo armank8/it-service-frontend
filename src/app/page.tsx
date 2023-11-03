@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <HeroSection></HeroSection>
-      {/* <h1>Our Exclusive Services</h1>
+      <h1>Our Exclusive Services</h1>
       {
         servicesData && <Services services={servicesData}></Services>
       }
@@ -40,12 +40,11 @@ export default function Home() {
       <h1 style={{ margin: '30px auto' }}>Our Tech Blogs</h1>
       {
         blogsData && <Blogs blogs={blogsData}></Blogs>
-      } */}
-
-      <h1 style={{ margin: '40px auto 20px auto' }}>Frequently Asked Questions</h1>
-      <Faq ></Faq>
+      }
 
       
+      <Faq ></Faq>
+           
       <ClientReview></ClientReview>
 
       <h1 style={{ margin: '40px auto 20px auto' }}>Our Upcoming Services</h1>

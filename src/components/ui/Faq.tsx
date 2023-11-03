@@ -29,9 +29,16 @@ const Faq = () => {
         console.log(key);
     };
 
-    return <div style={{margin:'20px auto'}}>
-        <Collapse items={items} defaultActiveKey={['1']} onChange={onChange} />
-    </div>;
+    return (
+        <section>
+            <h2 className='section_header'>Frequently Asked Questions</h2>
+
+            <div style={{ margin: '20px auto' }
+            }>
+                <Collapse items={items} defaultActiveKey={['1']} onChange={onChange} />
+            </div>
+        </section>
+    )
 };
 
 export default Faq;
