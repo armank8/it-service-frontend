@@ -38,53 +38,56 @@ const Services = ({ services }: { services: any }) => {
     };
 
     return (
-        <div style={{ margin: '10px auto', width: '80vw' }}>
+        <section className="container">
+            <div className="section_subheader">
+                <h2>Our Exclusive Services</h2>
 
-            <div>
-                <input style={{ padding: '10px', width: '200px', margin: '5px auto', display: 'block' }} placeholder="title...... Searching" type="text" name="" id="" onChange={searchKey as unknown  as ChangeEventHandler<HTMLInputElement>} />
-            </div>
+                <div>
+                    <input style={{ padding: '10px', width: '200px', margin: '5px auto', display: 'block' }} placeholder="title...... Searching" type="text" name="" id="" onChange={searchKey as unknown as ChangeEventHandler<HTMLInputElement>} />
+                </div>
 
-            {/* <Row gutter={[8, 16,24]}></Row> */}
-            <Row gutter={[8, 16]}>
-                {
-                    services.map((service: any) => (
-                        <Col key={service.id} xs={24} sm={24} md={12} lg={8}>
+                {/* <Row gutter={[8, 16,24]}></Row> */}
+                <Row gutter={[8, 16]}>
+                    {
+                        services.map((service: any) => (
+                            <Col key={service.id} xs={24} sm={24} md={12} lg={8}>
 
-                            <Card bordered={true} hoverable style={{ color: 'black' }}>
-                                <Link href={`/services/${service?._id}`} style={{ color: 'black' }}>
-                                    <h2 style={{ textAlign: 'center' }}>{service?.name}</h2>
-                                    <Space style={{ display: 'flex', justifyContent: "center" }}>
-                                        <Image src={service?.image} style={{}} alt='' width={200} height={200}></Image>
-                                    </Space>
+                                <Card bordered={true} hoverable style={{ color: 'black' }}>
+                                    <Link href={`/services/${service?._id}`} style={{ color: 'black' }}>
+                                        <h2 style={{ textAlign: 'center' }}>{service?.name}</h2>
+                                        <Space style={{ display: 'flex', justifyContent: "center" }}>
+                                            <Image src={service?.image} style={{}} alt='' width={200} height={200}></Image>
+                                        </Space>
 
-                                    <Space style={{ display: 'flex', justifyContent: 'space-between', margin: '0 100px' }}>
-                                        <p>{service?.category}</p>
-                                        <h1 style={{ color: 'crimson' }}>{service?.price}</h1>
-                                        <p>{service?.status}</p>
-                                    </Space>
-                                    <p>{service?.description?.length > 100 ? service.description.slice(0, 100) + '......' : service.description}
-                                    </p>
-                                </Link>
+                                        <Space style={{ display: 'flex', justifyContent: 'space-between', margin: '0 100px' }}>
+                                            <p>{service?.category}</p>
+                                            <h1 style={{ color: 'crimson' }}>{service?.price}</h1>
+                                            <p>{service?.status}</p>
+                                        </Space>
+                                        <p>{service?.description?.length > 100 ? service.description.slice(0, 100) + '......' : service.description}
+                                        </p>
+                                    </Link>
 
-                                {
-                                    cartServices.find((cart) => cart._id === service._id) ? (
-                                        <Button onClick={() => handleRemoveFromCart(service)} className="text-red-300 px-2">
-                                            Remove From cart
-                                        </Button>
-                                    ) : (
-                                        <Button onClick={() => handleAddToCart(service)}>Add To Cart</Button>
-                                    )
-                                }
-                            </Card>
+                                    {
+                                        cartServices.find((cart) => cart._id === service._id) ? (
+                                            <Button onClick={() => handleRemoveFromCart(service)} className="text-red-300 px-2">
+                                                Remove From cart
+                                            </Button>
+                                        ) : (
+                                            <Button onClick={() => handleAddToCart(service)}>Add To Cart</Button>
+                                        )
+                                    }
+                                </Card>
 
 
 
-                        </Col>
-                    ))
-                }
+                            </Col>
+                        ))
+                    }
 
-            </Row>
-        </div >
+                </Row>
+            </div >
+        </section>
     )
 }
 

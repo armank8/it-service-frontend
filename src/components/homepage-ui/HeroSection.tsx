@@ -4,17 +4,16 @@ import serviceSvg from '../../assets/service.svg';
 const HeroSection = () => {
     return (
         <div className={styles.heroSection}>
-            <div className={styles.leftSide}>
+            <div className={styles.heroContent}>
                 <div>
-                    <h3>We provide you the</h3>
+                    <p>We provide you the</p>
                     <h1>Best IT Service in the town</h1>
-                    <h3>24x7  service</h3>
+                    <p>24x7  service</p>
                 </div>
             </div>
-            <div className={styles.rightSide}>
-                {/* <Image src={serviceSvg} alt='service svg' width={400} height={400}></Image> */}
-
-            </div>
+            {/* <div className="">
+                <Image src={serviceSvg} alt='service svg' width={400} height={400}></Image>
+            </div> */}
         </div>
     )
 }

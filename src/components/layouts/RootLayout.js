@@ -44,13 +44,8 @@ const RootLayout = ({ children }) => {
                     </div>
                 </Header>
 
-                <Content
-                    style={{
-                        padding: '0 15%',
-                    }}
-                >
-                    <div
-                        className="site-layout-content"
+                <Content>
+                    <div className="site-layout-content"
                         style={{
                             background: colorBgContainer,
                             minHeight: "100vh"

@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <HeroSection></HeroSection>
-      <h1>Our Exclusive Services</h1>
+      
       {
         servicesData && <Services services={servicesData}></Services>
       }

@@ -1,26 +1,24 @@
 .heroSection {
   min-height: 60vh;
-  /* margin:0 -10%; */
+  // margin:0 -10%; 
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 2fr 1fr;
   grid-gap: 2rem;
-  position: relative;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, .3) ), url('../../assets//service1.jpg') ;
+  // position: relative;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, .5) ), url('../../assets//service1.jpg') ;
   background-size:cover;
   color:white;
 
   p{
-    color: white;
+    // color: white;
   }
 }
 
-.leftSide {
+.heroContent {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  color:white;
+  align-items: center;
+  // color:white;
 }
 
 .rightSide {
@@ -39,11 +37,5 @@
     /* margin: 20px 0; */
   }
 
-  .leftSide{
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-  }
+  
 }
