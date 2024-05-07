@@ -47,7 +47,7 @@ p {
 .smallP {
   font-size: 0.8rem;
   color: var(--light-white);
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 }
 
 .section_container {
@@ -105,4 +105,15 @@ p {
 /* card */
 .ant-card .ant-card-body {
   padding: 0;
+}
+
+/* Overview */
+.overview {
+  background: url(https://demo.mehedidb.com/utech/wp-content/uploads/sites/2/2022/10/bg_layer_3.png)
+    rgba(0, 0, 0, 0.936);
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* color: var(--white); */
 }
