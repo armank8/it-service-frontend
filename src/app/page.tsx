@@ -37,7 +37,7 @@ export default function Home() {
         servicesData && <Services services={servicesData} type={false}></Services>
       }
 
-      <h1 style={{ margin: '30px auto' }}>Our Tech Blogs</h1>
+      
       {
         blogsData && <Blogs blogs={blogsData}></Blogs>
       }
