@@ -11,10 +11,11 @@ body {
 }
 
 :root {
-  --primary-color: #055eab;
+  --primary-color: #012169;
   --secondary-color: #430f58;
   --black: #000;
   --white: #fff;
+  --light-white: #aaa;
   --max-width: 1200px;
 }
 
@@ -30,6 +31,9 @@ h2 {
 h3 {
   font-size: 1.5rem;
 }
+h4 {
+  font-size: 1rem;
+}
 p {
   font-size: 1rem;
 }
@@ -40,16 +44,16 @@ p {
   letter-spacing: 0.2rem;
   /* margin-bottom: 1rem; */
 }
+.smallP {
+  font-size: 0.8rem;
+  color: var(--light-white);
+  padding-right: .5rem;
+}
 
 .section_container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 7rem 0;
-}
-
-.container {
-  padding: 5rem 0;
-  /* margin: 0 auto; */
 }
 
 .icon_style {
@@ -82,7 +86,7 @@ p {
 .section_header {
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   color: var(--primary-color);
 }
 
@@ -96,3 +100,9 @@ p {
 /* @media () {
   
 } */
+
+/* ant D Modification */
+/* card */
+.ant-card .ant-card-body {
+  padding: 0;
+}

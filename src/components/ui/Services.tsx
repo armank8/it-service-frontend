@@ -8,7 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChangeEventHandler, FormEvent, useState } from "react";
 
-const Services = ({ services }: { services: any }) => {
+import styles from '../styles/Services.module.scss';
+import Title from "antd/es/typography/Title";
+
+const Services = ({ services, type }: { services: any, type: any }) => {
     const [inputValue, setInputValue] = useState<string | null>('');
     console.log(inputValue);
 
@@ -38,45 +41,57 @@ const Services = ({ services }: { services: any }) => {
     };
 
     return (
-        <section className="container">
-            <div className="section_subheader">
-                <h2>Our Exclusive Services</h2>
+        <section className="">
+            <div className="section_container">
+                <h2 className="section_header">Our Exclusive Services</h2>
 
-                <div>
-                    <input style={{ padding: '10px', width: '200px', margin: '5px auto', display: 'block' }} placeholder="title...... Searching" type="text" name="" id="" onChange={searchKey as unknown as ChangeEventHandler<HTMLInputElement>} />
-                </div>
+                {/* search bar */}
+                {
+                    type &&
+                    <div>
+                        <input style={{ padding: '10px', width: '200px', margin: '5px auto', display: 'block' }} placeholder="title...... Searching" type="text" name="" id="" onChange={searchKey as unknown as ChangeEventHandler<HTMLInputElement>} />
+                    </div>
+                }
 
                 {/* <Row gutter={[8, 16,24]}></Row> */}
-                <Row gutter={[8, 16]}>
+                <Row gutter={[32, 32]}>
                     {
                         services.map((service: any) => (
                             <Col key={service.id} xs={24} sm={24} md={12} lg={8}>
 
-                                <Card bordered={true} hoverable style={{ color: 'black' }}>
+                                <Card bordered={false} hoverable style={{ color: 'black',backgroundColor:'#eee' }}>
                                     <Link href={`/services/${service?._id}`} style={{ color: 'black' }}>
-                                        <h2 style={{ textAlign: 'center' }}>{service?.name}</h2>
-                                        <Space style={{ display: 'flex', justifyContent: "center" }}>
-                                            <Image src={service?.image} style={{}} alt='' width={200} height={200}></Image>
+
+                                        <Space>
+                                            <Image src={service?.image} width={700} height={500} style={{ maxWidth: '100%', height: 'auto', borderTopRightRadius: '1rem', borderTopLeftRadius: '1rem' }} alt=''></Image>
                                         </Space>
 
-                                        <Space style={{ display: 'flex', justifyContent: 'space-between', margin: '0 100px' }}>
-                                            <p>{service?.category}</p>
-                                            <h1 style={{ color: 'crimson' }}>{service?.price}</h1>
-                                            <p>{service?.status}</p>
+                                        <Space style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem' }}>
+                                            <Title style={{ textAlign: 'center', fontSize: '1rem', fontWeight: 'bold' }}>{service?.name}</Title>
+
+                                            <Space style={{ display: 'flex', justifyContent: 'center' }}>
+                                                <p><span className="smallP">Category</span>
+                                                    {service?.category}</p>
+                                                <h3 style={{ color: 'crimson' }}>{service?.price}</h3>
+                                                <p>{service?.status}</p>
+                                            </Space>
+                                            <p>{service?.description?.length > 100 ? service.description.slice(0, 100) + '......' : service.description}
+                                            </p>
+
+
+                                            <Space style={{ display: 'flex', justifyContent: 'center' }}>
+                                                {
+                                                    cartServices.find((cart) => cart._id === service._id) ? (
+                                                        <Button onClick={() => handleRemoveFromCart(service)} className="text-red-300 px-2">
+                                                            Remove From cart
+                                                        </Button>
+                                                    ) : (
+                                                        <Button onClick={() => handleAddToCart(service)}>Add To Cart</Button>
+                                                    )
+                                                }
+                                            </Space>
                                         </Space>
-                                        <p>{service?.description?.length > 100 ? service.description.slice(0, 100) + '......' : service.description}
-                                        </p>
                                     </Link>
-
-                                    {
-                                        cartServices.find((cart) => cart._id === service._id) ? (
-                                            <Button onClick={() => handleRemoveFromCart(service)} className="text-red-300 px-2">
-                                                Remove From cart
-                                            </Button>
-                                        ) : (
-                                            <Button onClick={() => handleAddToCart(service)}>Add To Cart</Button>
-                                        )
-                                    }
                                 </Card>
 
 
@@ -87,7 +102,7 @@ const Services = ({ services }: { services: any }) => {
 
                 </Row>
             </div >
-        </section>
+        </section >
     )
 }
 
