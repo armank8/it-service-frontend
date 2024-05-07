@@ -7,7 +7,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 const ClientReview = () => {
     return (
         // style={{ display: 'flex', width: '70vw', margin: '20px auto' }}
-        <section>
+        <section className="section_container">
             <h2 className="section_header">What our customers say about us</h2>
             <div className="box-container">
                 <div className="info-box">

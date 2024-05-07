@@ -30,11 +30,10 @@ const Faq = () => {
     };
 
     return (
-        <section>
+        <section className='section_container'>
             <h2 className='section_header'>Frequently Asked Questions</h2>
 
-            <div style={{ margin: '20px auto' }
-            }>
+            <div >
                 <Collapse items={items} defaultActiveKey={['1']} onChange={onChange} />
             </div>
         </section>

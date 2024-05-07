@@ -47,10 +47,10 @@ export default function Home() {
 
       <ClientReview></ClientReview>
 
-      <h1 style={{ margin: '40px auto 20px auto' }}>Our Upcoming Services</h1>
+     
       <UpcomingServices></UpcomingServices>
 
-      <h1 style={{ margin: '40px auto 20px auto' }}>Our  Service Overview</h1>
+      
       <ServiceOverview></ServiceOverview>
 
     </main>
