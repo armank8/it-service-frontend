@@ -12,8 +12,8 @@ const HeroSection = () => {
                     <p className="lead_text">24x7  service</p>
 
                 </div>
-                <div className="hero_img">
-                    <Image layout='responsive' src={service1} alt='service svg' width={500} height={500}></Image>
+                <div>
+                    <Image style={{ maxWidth: '100%', height: 'auto', borderRadius: '1rem' }} src={service1} alt='img'></Image>
                 </div>
             </div>
         </section>
