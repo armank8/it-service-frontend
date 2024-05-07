@@ -22,7 +22,7 @@ const RootLayout = ({ children }) => {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between'
+                        // justifyContent: 'space-between'
                     }}
                 >
                     <div className="demo-logo" style={{ color: "white", fontWeight: "bold", fontSize: "20px", lineHeight: '0' }}>
@@ -45,15 +45,15 @@ const RootLayout = ({ children }) => {
                 </Header>
 
                 <Content>
-                    <div className="site-layout-content"
+                    {/* <div 
                         style={{
                             background: colorBgContainer,
                             minHeight: "100vh"
                         }}
-                    >
+                    > */}
                         
                         {children}
-                    </div>
+                    {/* </div> */}
 
                 </Content>
 

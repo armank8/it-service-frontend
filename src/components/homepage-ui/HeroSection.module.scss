@@ -1,41 +1,25 @@
-.heroSection {
-  min-height: 60vh;
-  // margin:0 -10%; 
-  width: 100%;
+.hero {
+  background-color: #333;
+}
+.hero_section {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
-  // position: relative;
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, .5) ), url('../../assets//service1.jpg') ;
-  background-size:cover;
-  color:white;
-
-  p{
-    // color: white;
-  }
 }
 
-.heroContent {
+.hero_content {
   display: flex;
-  align-items: center;
-  // color:white;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero_img {
 }
 
-.rightSide {
-  position: absolute;
-  top: 20%;
-  right: 0%;
-}
-
-@media (max-width: 900px) {
-  .heroSection {
+@media screen and (max-width: 800px) {
+  .hero_section {
     grid-template-columns: 1fr;
   }
-  .leftSide,
-  .rightSide {
-    position: static;
-    /* margin: 20px 0; */
+  .hero_content {
+    align-items: center;
   }
-
-  
 }
