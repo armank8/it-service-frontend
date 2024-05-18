@@ -14,7 +14,7 @@ const ServicesPage = () => {
         <div>
             <h1 style={{textAlign:'center'}}>Our Exclusive Services</h1>
             {
-                servicesData && <Services services={servicesData}></Services>
+                servicesData && <Services services={servicesData} type={undefined}></Services>
             }
         </div>
     )
